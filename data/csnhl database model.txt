@@ -1,0 +1,31 @@
+Database Model Concept
+Player Name: Represented in Characters
+Player Team: represented in Characters
+
+If the dates are the keys, then the database would consist of a date, which teams played,
+the score, which players scored, assisted, got penalties, which won and which didn't.
+
+We will call this the primary input filter. 
+
+Date, time, team1[player, goal, assist, penalty], team2[player, goal, assist, penalty], winning team.
+
+All information that is kept on a score sheet. 
+In which case you need to have the information stored in a way that allows your algorithm to access this information quickly. 
+
+Perhaps running in the background and creating these information sets in the background while the front is only there to display the information that has already been sorted on the server side.
+
+
+Needed: 
+Function to auto generate history page. 
+Function to auto generate game dates(while ignoring specified weekends and considering that the winner of the previous year gets to decide when they play) 
+
+Questions
+When do we play? 
+who is playing? 
+what time are they playing at? 
+how many times have they played
+
+Player details
+Team details
+Game schedule
+Game Results

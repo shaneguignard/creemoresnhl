@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+     <script>
+        //Function determines next sunday by knowing which day of the month it is. 
+
+        function nextGame(day) {
+            //get day of month from input and make it a mock day of month
+            var t = new Date()
+            t.setDate(day)
+            //use input "mock Day" to set todays date
+            var a = new Date(t);
+            //determine the number of days till next sunday
+            var b = 7 - a.getDay();
+            //determine what day of the month it is
+            var c = a.getDate();
+            //add difference till next sunday to day of the month
+            a.setDate(b + c);
+            //Use new day of month to print date of next sunday
+            document.getElementById("demo").innerHTML = a.toDateString();
+        }
+    </script>
+<body>
+
+    <p>Click the button to display the date as a string.</p>
+    <input id='dayofmonth' type='text'/>
+    <button onclick="nextGame(dayofmonth.value)">Try it</button>
+
+    <p id="demo"></p>
+
+   
+
+</body>
+</html>

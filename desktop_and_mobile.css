@@ -1,0 +1,190 @@
+Colour Theme Background: White Font: Black Accent: CSNHLBlue (#225D7A)
+/*Where are the break points?*/
+
+
+/*It is easier to work from the desktop down to the mobile as mobile 
+css will inherit the desktop styles, but the desktop styles wont inherit the mobile
+styles*/
+
+html body {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    display: inline;
+}
+
+#root {
+    padding: 5px;
+}
+
+td {
+    padding: 5px;
+}
+
+nav {
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 5;
+    text-align: center;
+    display: inline-table;
+}
+
+nav a:hover {
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+nav:hover {
+    cursor: pointer;
+}
+
+#header{
+    background-color: black;
+    color: white;
+    display: table;
+    width: 100%;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#logo {
+    width: inherit;
+    min-width: 50px;
+    max-width: 100px;
+}
+
+#awards {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#champs {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.sponsorlinks {
+    max-width: 100%;
+    max-height: 70px;
+}
+
+
+/* historySection */
+
+historyYear,
+historyTeam {
+    margin: 20px;
+}
+
+.pageLinks {
+    display: block;
+}
+
+.historyLinkImg {
+    height: 50px;
+}
+
+th {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 25px;
+    margin: 0px;
+    vertical-align: text-top;
+}
+
+td,
+a {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 200;
+    line-height: 25px;
+    margin: 0px;
+}
+
+h6 {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 200;
+    line-height: 25px;
+    margin: 0px;
+}
+
+h1 {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 300;
+    line-height: 25px;
+    text-align: left;
+}
+
+h2 {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 35px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 300;
+    line-height: 25px;
+    text-align: left;
+}
+
+p {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 200;
+    line-height: 30px;
+}
+
+blockquote {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+pre {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5667px;
+}
+
+@media screen and (max-width: 685px) {
+    nav a {
+        min-width: 40px;
+        min-height: 15%;
+        padding: 10px;
+    }
+    nav {
+        width: 100%;
+    }
+    
+    #header td{
+        background-color: black;
+    }
+    
+}

@@ -1,0 +1,759 @@
+Player Name:Adam Mead
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Mee
+
+Player Name:Andrew Cuddingham
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Cud
+
+Player Name:Andrew Rentner
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Ren
+
+Player Name:Andrew Vanderheyden 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Van
+
+Player Name:Andy Greip
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Gre
+
+Player Name:Andy Vanderheyden
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Van
+
+Player Name:Barry Lightheart
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Lig
+
+Player Name:Bill Cross
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Cro
+
+Player Name:Blake Stephens
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Ste
+
+Player Name:Brad Soules
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Sou
+
+Player Name:Brandon Brown
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Bro
+
+Player Name:Brent Larose 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Lar
+
+Player Name:Brent Trott
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Tro
+
+Player Name:Brett Millsap
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Mil
+
+Player Name:Brian McIntyre
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Mci
+
+Player Name:Brian Streigl
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Str
+
+Player Name:Carl Gaudreault
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Gau
+
+Player Name:Chase Tippen
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Tip
+
+Player Name:Chris Lammle
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Lam
+
+Player Name:Chris Martin
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Mar
+
+Player Name:Colin Dodd
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Dod
+
+Player Name:Corey Halliday
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Hal
+
+Player Name:Craig Brown
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Bro
+
+Player Name:Creighton Vermeer
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Ver
+
+Player Name:Curtis Kenwell
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Joh
+
+Player Name:Dan Hamelin 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Ham
+
+Player Name:Dan Holwell
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Hol
+
+Player Name:Dan Lemmon
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Lem
+
+Player Name:Dane Metheral
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Met
+
+Player Name:Darren McQuay 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:McQ
+
+Player Name:Dave Wiley
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Wil
+
+Player Name:David Dillon 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Dil
+
+Player Name:Dean McDonald
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Mcd
+
+Player Name:Derrick Robson
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Van
+
+Player Name:Donnie Thomson 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Tho
+
+Player Name:Dustin Marsden
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Mar
+
+Player Name:Ed Leonard
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Leo
+
+Player Name:Ed Van Severen 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Van
+
+Player Name:Eric Albert
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Alb
+
+Player Name:Evan Walker
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Wal
+
+Player Name:Gary Stamp
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Sta
+
+Player Name:Grant Taylor 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Tay
+
+Player Name:Jace Metheral
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Met
+
+Player Name:Jarid Singleton
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Sin
+
+Player Name:Jay Geneau 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Gen
+
+Player Name:Jean-Paul Laferriere
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Laf
+
+Player Name:Jeff Coates 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Coa
+
+Player Name:Jeff Eichenberber
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Eic
+
+Player Name:Jeff Snyder
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Syd
+
+Player Name:Jeff Williams 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Wil
+
+Player Name:Jeremy Van Severen
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Van
+
+Player Name:Jesse Metheral
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Met
+
+Player Name:Jim Malcom
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Mal
+
+Player Name:Joe Degroot
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Deg
+
+Player Name:John Millsap 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:MIl
+
+Player Name:John Nuttley
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Nut
+
+Player Name:John Palmer
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Pal
+
+Player Name:Jordan McColl
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Mcc
+
+Player Name:Kent McKenzie
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Mck
+
+Player Name:Kevin Lowe
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Low
+
+Player Name:Lonny Smith
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Smi
+
+Player Name:Mark David Shave
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Sha
+
+Player Name:Mat McGill
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Mcg
+
+Player Name:Matt Lemmon
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Lem
+
+Player Name:Mike Foster
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Fos
+
+Player Name:Mike Guignard 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Gui
+
+Player Name:Mike Hughes
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Hug
+
+Player Name:Mike Robins 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Rob
+
+Player Name:Paul Curran
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:CUr
+
+Player Name:Paul McCartney 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Mcc
+
+Player Name:Paul Nicholson
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Nic
+
+Player Name:Pete Polasek
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Pol
+
+Player Name:Pete Walker
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Wal
+
+Player Name:Pete Wilson
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Wil
+
+Player Name:Rich Gauthier
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Gau
+
+Player Name:Rick Metheral
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Met
+
+Player Name:Ryan Lightheart
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Lig
+
+Player Name:Ryan McCartney 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:NL
+Short:Mcc
+
+Player Name:Scott Bone
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Faw
+
+Player Name:Scott Holmes
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Hol
+
+Player Name:Sean Hayward
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Hay
+
+Player Name:Shane Walker
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Wal
+
+Player Name:Shawn Gillespie
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Gil
+
+Player Name:Shawn Hughson 
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Hug
+
+Player Name:Sparky Duits
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Garner
+Short:Dui
+
+Player Name:Steve Martin
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Mar
+
+Player Name:Taylor Wadeson
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Wad
+
+Player Name:Tim Talbot
+G:0
+A:0
+Pts:0
+PIM:0
+Team:CC
+Short:Tal
+
+Player Name:Trent Campbell
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Cam
+
+Player Name:Tristan Cabral
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Cab
+
+Player Name:Tristan Zeggil
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Zeg
+
+Player Name:Wade Marsh
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Belarus
+Short:Mar
+
+Player Name:Walt Rowbotham
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Cash
+Short:Row
+
+Player Name:Wes Miller
+G:0
+A:0
+Pts:0
+PIM:0
+Team:Stayner
+Short:Mil
+
+Team	GP	W	L	T	PTS	GF	GA	+/-
+Cashtown	0	0	0	0	0	0	0	0
+New Lowell	0	0	0	0	0	0	0	0
+Coates Creek	0	0	0	0	0	0	0	0
+Garner	0	0	0	0	0	0	0	0
+Stayner	0	0	0	0	0	0	0	0
+Belarus	0	0	0	0	0	0	0	0

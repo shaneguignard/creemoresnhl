@@ -1,0 +1,186 @@
+<!--Needs to submit to java server-->
+<html>
+
+<head>
+    <title>Score Sheet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+        }
+        
+        body {
+            max-width: 500px;
+        }
+        
+        input[type=text],
+        input[type=password] {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+        
+        input[type=button] {
+            width: 75px;
+        }
+        
+        #lightShots,
+        #darkShots {
+            display: inline;
+        }
+        
+        table {
+            width: 100%;
+        }
+        
+        table #root {
+            width: 600px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form id='form' method='POST' action='example.java'>
+        <table id="root" border=1>
+            <thead>
+                <h1>Creemore Sunday Night Hockey</h1>
+            </thead>
+            <tr>
+                <td colspan="2">
+                    <h1 id="lightScore">0</h1>
+                </td>
+                <td colspan="2">
+                    <h1 id="darkScore">0</h1>
+                </td>
+            </tr>
+            <tr>
+                <td id="lightsTeamName" colspan="1">Lights</td>
+                <td colspan="1">Shots:
+                    <h3 id="lightShots">0</h3>
+                </td>
+                <td colspan="1" id="darkTeamName">Darks</td>
+                <td colspan="1">Shots:
+                    <h3 id="darkShots">0</h3>
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="2">
+                    <input type="text" name="playedAt" placeholder="Area" value="Creemore Arena"></td>
+                <td colspan="2">
+                    <input type="text" name="gameDate" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="ref" placeholder="Referee">
+                </td>
+                <td colspan="2">
+                    <input type="password" name="ref" placeholder="Password">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="timekeeper" placeholder="TimeKeeper">
+                </td>
+                <td colspan="2">
+                    <input type="password" name="timekeeper" placeholder="Password">
+                </td>
+            </tr>
+        </table>
+        <br> Lights:
+        <select id="light">
+                <option value="Light 1" name="hometeam">Light 1</option>
+                <option value="Light 2" name="hometeam">Light 2</option>
+                <option value="Light 3" name="hometeam">Light 3</option>
+            </select>
+        <input type="button" name="point" value="Goal" onclick="add('Goal', 'light', 'player name')">
+        <input type="button" name="penalty" value="Penalty!" onclick="add('Penalty', 'light', 'player name')">
+
+
+        <br>Darks:
+        <select id="dark">
+                <option value="Dark 1" name="visitorteam">Dark 1</option>
+                <option value="Dark 2" name="visitorteam">Dark 2</option>
+                <option value="Dark 3" name="visitorteam">Dark 3</option>
+            </select>
+        <input type="button" name="point" value="Goal" onclick="add('Goal', 'dark', 'player name')">
+        <input type="button" name="penalty" value="Penalty" onclick="add('Penalty', 'dark',  'player name')">
+        <br>
+        <input type="button" name="lightShots" value="Home SHOT!" onclick="add('Shot', 'light')">
+        <input type="button" name="darkShot" value="Away SHOT!" onclick="add('Shot', 'dark')">
+        <input type="submit" value="End Game">
+        <h3>History</h3>
+        <table border="1">
+            <tr>
+                <td>Type</td>
+                <td>Team</td>
+                <td>Period</td>
+                <td>Time</td>
+                <td>Player</td>
+                <td>Assists</td>
+            </tr>
+            <tbody id="records">
+            </tbody>
+        </table>
+
+    </form>
+
+</body>
+
+
+<script>
+    var d = new Date();
+    var x = document.getElementsByName('gameDate')[0];
+    x.value = d;
+    var points = [];
+    var lightShots = 0;
+    var lightGoals = 0;
+    var darkShots = 0;
+    var darkGoals = 0;
+
+    var record = document.getElementById("records");
+
+    function add(type, team, player) {
+        var newPoint = '<tr class="point"><td>' + type + '</td><td>' + document.getElementById(team).value + '</td><td></td><td></td><td>' + player + '</td><td></td></tr>';
+
+        if (type == "Shot") {
+            console.log(type);
+            console.log(team);
+            if (team == "light") {
+                lightShots++;
+                document.getElementById("lightShots").innerHTML = lightShots;
+                console.log(lightShots);
+            }
+            if (team == "dark") {
+                darkShots++;
+                document.getElementById("darkShots").innerHTML = darkShots;
+                console.log(darkShots)
+            }
+        }
+        if (type == "Goal") {
+            if (team == "light") {
+                lightGoals++;
+                document.getElementById("lightScore").innerHTML = lightGoals;
+                console.log(lightGoals);
+            }
+            if (team == "dark") {
+                darkGoals++;
+                document.getElementById("darkScore").innerHTML = darkGoals;
+                console.log(darkGoals);
+            }
+        }
+
+
+        points.push(newPoint);
+        var temp = points.join('');
+        record.innerHTML = temp;
+        return
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,830 @@
+[
+{
+      "Player Name": "Player",
+      "G": "G",
+      "A": "A",
+      "Pts": "Pts",
+      "PIM": "PIM",
+      "Team": "Team",
+      "Short": "Zeg"
+   },
+   {
+      "Player Name": "Tristan Zegil",
+      "G": 19,
+      "A": 21,
+      "Pts": 40,
+      "PIM": 6,
+      "Team": "Belarus",
+      "Short": "Zeg"
+   },
+   {
+      "Player Name": "Steve Martin",
+      "G": 19,
+      "A": 17,
+      "Pts": 36,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Mar"
+   },
+   {
+      "Player Name": "Tristan Cabral",
+      "G": 16,
+      "A": 18,
+      "Pts": 34,
+      "PIM": 14,
+      "Team": "Belarus",
+      "Short": "Cab"
+   },
+   {
+      "Player Name": "Jace Metheral",
+      "G": 15,
+      "A": 16,
+      "Pts": 31,
+      "PIM": 0,
+      "Team": "Garner",
+      "Short": "Met"
+   },
+   {
+      "Player Name": "Adam Garbutt",
+      "G": 21,
+      "A": 7,
+      "Pts": 28,
+      "PIM": 2,
+      "Team": "Cash",
+      "Short": "Gar"
+   },
+   {
+      "Player Name": "Jesse Metheral",
+      "G": 17,
+      "A": 11,
+      "Pts": 28,
+      "PIM": 16,
+      "Team": "CC",
+      "Short": "Met"
+   },
+   {
+      "Player Name": "John Millsap ",
+      "G": 12,
+      "A": 16,
+      "Pts": 28,
+      "PIM": 0,
+      "Team": "Cash",
+      "Short": "MIl"
+   },
+   {
+      "Player Name": "Jeff Smith ",
+      "G": 10,
+      "A": 17,
+      "Pts": 27,
+      "PIM": 4,
+      "Team": "Garner",
+      "Short": "Smi"
+   },
+   {
+      "Player Name": "Eric Albert",
+      "G": 8,
+      "A": 15,
+      "Pts": 23,
+      "PIM": 4,
+      "Team": "NL",
+      "Short": "Alb"
+   },
+   {
+      "Player Name": "Bill Cross",
+      "G": 15,
+      "A": 8,
+      "Pts": 23,
+      "PIM": 0,
+      "Team": "Garner",
+      "Short": "Cro"
+   },
+   {
+      "Player Name": "Corey Halliday",
+      "G": 13,
+      "A": 10,
+      "Pts": 23,
+      "PIM": 6,
+      "Team": "CC",
+      "Short": "Hal"
+   },
+   {
+      "Player Name": "Jeff Fawcett",
+      "G": 18,
+      "A": 4,
+      "Pts": 22,
+      "PIM": 4,
+      "Team": "Stayner",
+      "Short": "Faw"
+   },
+   {
+      "Player Name": "Matt Lemmon",
+      "G": 12,
+      "A": 10,
+      "Pts": 22,
+      "PIM": 14,
+      "Team": "Cash",
+      "Short": "Lem"
+   },
+   {
+      "Player Name": "Joe Nieleszeruk",
+      "G": 9,
+      "A": 10,
+      "Pts": 19,
+      "PIM": 4,
+      "Team": "Garner",
+      "Short": "Nie"
+   },
+   {
+      "Player Name": "Chris Martin",
+      "G": 8,
+      "A": 10,
+      "Pts": 18,
+      "PIM": 4,
+      "Team": "Stayner",
+      "Short": "Mar"
+   },
+   {
+      "Player Name": "Jordan McColl",
+      "G": 11,
+      "A": 6,
+      "Pts": 17,
+      "PIM": 2,
+      "Team": "NL",
+      "Short": "Mcc"
+   },
+   {
+      "Player Name": "Mike Robins ",
+      "G": 8,
+      "A": 9,
+      "Pts": 17,
+      "PIM": 4,
+      "Team": "Garner",
+      "Short": "Rob"
+   },
+   {
+      "Player Name": "Lonny Smith",
+      "G": 11,
+      "A": 6,
+      "Pts": 17,
+      "PIM": 10,
+      "Team": "Garner",
+      "Short": "Smi"
+   },
+   {
+      "Player Name": "Dane Metheral",
+      "G": 8,
+      "A": 8,
+      "Pts": 16,
+      "PIM": 4,
+      "Team": "NL",
+      "Short": "Met"
+   },
+   {
+      "Player Name": "Mike Guignard ",
+      "G": 10,
+      "A": 5,
+      "Pts": 15,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Gui"
+   },
+   {
+      "Player Name": "Jeff Coates ",
+      "G": 1,
+      "A": 13,
+      "Pts": 14,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Coa"
+   },
+   {
+      "Player Name": "Joe Degroot",
+      "G": 5,
+      "A": 9,
+      "Pts": 14,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Deg"
+   },
+   {
+      "Player Name": "Mack Morrish",
+      "G": 5,
+      "A": 9,
+      "Pts": 14,
+      "PIM": 12,
+      "Team": "CC",
+      "Short": "Mor"
+   },
+   {
+      "Player Name": "Andy Rowbotham",
+      "G": 3,
+      "A": 11,
+      "Pts": 14,
+      "PIM": 0,
+      "Team": "Cash",
+      "Short": "Row"
+   },
+   {
+      "Player Name": "Derrick Robson",
+      "G": 8,
+      "A": 6,
+      "Pts": 14,
+      "PIM": 2,
+      "Team": "Cash",
+      "Short": "Van"
+   },
+   {
+      "Player Name": "Dan Hamelin ",
+      "G": 4,
+      "A": 9,
+      "Pts": 13,
+      "PIM": 4,
+      "Team": "Cash",
+      "Short": "Ham"
+   },
+   {
+      "Player Name": "Sean Hayward",
+      "G": 2,
+      "A": 11,
+      "Pts": 13,
+      "PIM": 8,
+      "Team": "Garner",
+      "Short": "Hay"
+   },
+   {
+      "Player Name": "Wes Miller",
+      "G": 8,
+      "A": 5,
+      "Pts": 13,
+      "PIM": 12,
+      "Team": "Stayner",
+      "Short": "Mil"
+   },
+   {
+      "Player Name": "Brent Larose ",
+      "G": 5,
+      "A": 7,
+      "Pts": 12,
+      "PIM": 6,
+      "Team": "NL",
+      "Short": "Lar"
+   },
+   {
+      "Player Name": "Dustin Marsden",
+      "G": 3,
+      "A": 9,
+      "Pts": 12,
+      "PIM": 16,
+      "Team": "Garner",
+      "Short": "Mar"
+   },
+   {
+      "Player Name": "Chris Millsap",
+      "G": 7,
+      "A": 5,
+      "Pts": 12,
+      "PIM": 0,
+      "Team": "Cash",
+      "Short": "Mil"
+   },
+   {
+      "Player Name": "Tim Talbot",
+      "G": 7,
+      "A": 5,
+      "Pts": 12,
+      "PIM": 2,
+      "Team": "CC",
+      "Short": "Tal"
+   },
+   {
+      "Player Name": "Brent Trott",
+      "G": 6,
+      "A": 6,
+      "Pts": 12,
+      "PIM": 0,
+      "Team": "CC",
+      "Short": "Tro"
+   },
+   {
+      "Player Name": "Scott Holmes",
+      "G": 1,
+      "A": 10,
+      "Pts": 11,
+      "PIM": 6,
+      "Team": "CC",
+      "Short": "Hol"
+   },
+   {
+      "Player Name": "Andrew Vanderheyden ",
+      "G": 4,
+      "A": 7,
+      "Pts": 11,
+      "PIM": 10,
+      "Team": "NL",
+      "Short": "Van"
+   },
+   {
+      "Player Name": "Kyle Coker",
+      "G": 5,
+      "A": 5,
+      "Pts": 10,
+      "PIM": 10,
+      "Team": "Stayner",
+      "Short": "Cok"
+   },
+   {
+      "Player Name": "Sparky Duits",
+      "G": 2,
+      "A": 7,
+      "Pts": 9,
+      "PIM": 0,
+      "Team": "Garner",
+      "Short": "Dui"
+   },
+   {
+      "Player Name": "Mike Foster",
+      "G": 5,
+      "A": 4,
+      "Pts": 9,
+      "PIM": 4,
+      "Team": "Stayner",
+      "Short": "Fos"
+   },
+   {
+      "Player Name": "Shawn Hughson ",
+      "G": 0,
+      "A": 9,
+      "Pts": 9,
+      "PIM": 0,
+      "Team": "Cash",
+      "Short": "Hug"
+   },
+   {
+      "Player Name": "Jim Malcom",
+      "G": 5,
+      "A": 4,
+      "Pts": 9,
+      "PIM": 16,
+      "Team": "CC",
+      "Short": "Mal"
+   },
+   {
+      "Player Name": "Brian Streigl",
+      "G": 5,
+      "A": 4,
+      "Pts": 9,
+      "PIM": 6,
+      "Team": "NL",
+      "Short": "Str"
+   },
+   {
+      "Player Name": "Ed Van Severen ",
+      "G": 2,
+      "A": 7,
+      "Pts": 9,
+      "PIM": 4,
+      "Team": "Cash",
+      "Short": "Van"
+   },
+   {
+      "Player Name": "Taylor Wadeson",
+      "G": 6,
+      "A": 3,
+      "Pts": 9,
+      "PIM": 2,
+      "Team": "Cash",
+      "Short": "Wad"
+   },
+   {
+      "Player Name": "Curtis Kenwell",
+      "G": 2,
+      "A": 6,
+      "Pts": 8,
+      "PIM": 2,
+      "Team": "CC",
+      "Short": "Joh"
+   },
+   {
+      "Player Name": "Barry Lightheart",
+      "G": 5,
+      "A": 3,
+      "Pts": 8,
+      "PIM": 12,
+      "Team": "Stayner",
+      "Short": "Lig"
+   },
+   {
+      "Player Name": "Darren McQuay ",
+      "G": 1,
+      "A": 7,
+      "Pts": 8,
+      "PIM": 2,
+      "Team": "Stayner",
+      "Short": "McQ"
+   },
+   {
+      "Player Name": "MarkDavid Shave ",
+      "G": 2,
+      "A": 6,
+      "Pts": 8,
+      "PIM": 4,
+      "Team": "Garner",
+      "Short": "Sha"
+   },
+   {
+      "Player Name": "Pete Smith ",
+      "G": 2,
+      "A": 6,
+      "Pts": 8,
+      "PIM": 0,
+      "Team": "NL",
+      "Short": "Smi"
+   },
+   {
+      "Player Name": "Andy Vanderheyden",
+      "G": 3,
+      "A": 5,
+      "Pts": 8,
+      "PIM": 6,
+      "Team": "NL",
+      "Short": "Van"
+   },
+   {
+      "Player Name": "David Dillon ",
+      "G": 3,
+      "A": 4,
+      "Pts": 7,
+      "PIM": 4,
+      "Team": "CC",
+      "Short": "Dil"
+   },
+   {
+      "Player Name": "Rich Gauthier",
+      "G": 3,
+      "A": 4,
+      "Pts": 7,
+      "PIM": 8,
+      "Team": "CC",
+      "Short": "Gau"
+   },
+   {
+      "Player Name": "Rich Gill ",
+      "G": 1,
+      "A": 6,
+      "Pts": 7,
+      "PIM": 2,
+      "Team": "NL",
+      "Short": "Gil"
+   },
+   {
+      "Player Name": "Shane Guignard",
+      "G": 3,
+      "A": 4,
+      "Pts": 7,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Gui"
+   },
+   {
+      "Player Name": "Chris Lammle",
+      "G": 3,
+      "A": 4,
+      "Pts": 7,
+      "PIM": 8,
+      "Team": "Belarus",
+      "Short": "Lam"
+   },
+   {
+      "Player Name": "Kevin Lowe",
+      "G": 2,
+      "A": 5,
+      "Pts": 7,
+      "PIM": 6,
+      "Team": "NL",
+      "Short": "Low"
+   },
+   {
+      "Player Name": "Dean McDonald",
+      "G": 3,
+      "A": 4,
+      "Pts": 7,
+      "PIM": 2,
+      "Team": "NL",
+      "Short": "Mcc"
+   },
+   {
+      "Player Name": "Kent McKenzie",
+      "G": 2,
+      "A": 5,
+      "Pts": 7,
+      "PIM": 6,
+      "Team": "Stayner",
+      "Short": "Mck"
+   },
+   {
+      "Player Name": "Pete Polasek",
+      "G": 2,
+      "A": 5,
+      "Pts": 7,
+      "PIM": 0,
+      "Team": "Stayner",
+      "Short": "Pol"
+   },
+   {
+      "Player Name": "Dan Sommerville",
+      "G": 4,
+      "A": 3,
+      "Pts": 7,
+      "PIM": 2,
+      "Team": "Garner",
+      "Short": "Som"
+   },
+   {
+      "Player Name": "Brad Soules",
+      "G": 1,
+      "A": 6,
+      "Pts": 7,
+      "PIM": 2,
+      "Team": "Stayner",
+      "Short": "Sou"
+   },
+   {
+      "Player Name": "Paul Sweeny ",
+      "G": 6,
+      "A": 1,
+      "Pts": 7,
+      "PIM": 0,
+      "Team": "NL",
+      "Short": "Swe "
+   },
+   {
+      "Player Name": "Carl Gaudreault",
+      "G": 4,
+      "A": 2,
+      "Pts": 6,
+      "PIM": 24,
+      "Team": "CC",
+      "Short": "Gau"
+   },
+   {
+      "Player Name": "Andrew Rentner",
+      "G": 1,
+      "A": 5,
+      "Pts": 6,
+      "PIM": 10,
+      "Team": "Cash",
+      "Short": "Ren"
+   },
+   {
+      "Player Name": "Jarid Singleton",
+      "G": 2,
+      "A": 4,
+      "Pts": 6,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Sin"
+   },
+   {
+      "Player Name": "Andy Greip",
+      "G": 0,
+      "A": 5,
+      "Pts": 5,
+      "PIM": 6,
+      "Team": "Garner",
+      "Short": "Gre"
+   },
+   {
+      "Player Name": "Ryan McCartney ",
+      "G": 2,
+      "A": 3,
+      "Pts": 5,
+      "PIM": 2,
+      "Team": "NL",
+      "Short": "Mcc"
+   },
+   {
+      "Player Name": "Jarid Ross",
+      "G": 1,
+      "A": 4,
+      "Pts": 5,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Ros"
+   },
+   {
+      "Player Name": "Gary Stamp",
+      "G": 2,
+      "A": 3,
+      "Pts": 5,
+      "PIM": 4,
+      "Team": "Cash",
+      "Short": "Sta"
+   },
+   {
+      "Player Name": "Jeff Williams ",
+      "G": 2,
+      "A": 3,
+      "Pts": 5,
+      "PIM": 2,
+      "Team": "Garner",
+      "Short": "Wil"
+   },
+   {
+      "Player Name": "Chris English",
+      "G": 2,
+      "A": 2,
+      "Pts": 4,
+      "PIM": 16,
+      "Team": "Garner",
+      "Short": "Eng"
+   },
+   {
+      "Player Name": "Jean-Paul Laferriere",
+      "G": 0,
+      "A": 4,
+      "Pts": 4,
+      "PIM": 2,
+      "Team": "Stayner",
+      "Short": "Laf"
+   },
+   {
+      "Player Name": "Rick Metheral",
+      "G": 2,
+      "A": 2,
+      "Pts": 4,
+      "PIM": 6,
+      "Team": "CC",
+      "Short": "Met"
+   },
+   {
+      "Player Name": "Paul Nicholson",
+      "G": 1,
+      "A": 3,
+      "Pts": 4,
+      "PIM": 6,
+      "Team": "CC",
+      "Short": "Nic"
+   },
+   {
+      "Player Name": "John Nuttley",
+      "G": 0,
+      "A": 4,
+      "Pts": 4,
+      "PIM": 8,
+      "Team": "Belarus",
+      "Short": "Nut"
+   },
+   {
+      "Player Name": "Grant Taylor ",
+      "G": 0,
+      "A": 4,
+      "Pts": 4,
+      "PIM": 0,
+      "Team": "Cash",
+      "Short": "Tay"
+   },
+   {
+      "Player Name": "Mike Hughes",
+      "G": 1,
+      "A": 2,
+      "Pts": 3,
+      "PIM": 0,
+      "Team": "Stayner",
+      "Short": "Hug"
+   },
+   {
+      "Player Name": "Ed Leonard",
+      "G": 1,
+      "A": 2,
+      "Pts": 3,
+      "PIM": 4,
+      "Team": "Stayner",
+      "Short": "Leo"
+   },
+   {
+      "Player Name": "Wade Marsh",
+      "G": 1,
+      "A": 2,
+      "Pts": 3,
+      "PIM": 20,
+      "Team": "Belarus",
+      "Short": "Mar"
+   },
+   {
+      "Player Name": "Dave Wiley",
+      "G": 0,
+      "A": 3,
+      "Pts": 3,
+      "PIM": 4,
+      "Team": "Belarus",
+      "Short": "Wil"
+   },
+   {
+      "Player Name": "Andrew Cuddingham",
+      "G": 0,
+      "A": 2,
+      "Pts": 2,
+      "PIM": 0,
+      "Team": "Stayner",
+      "Short": "Cud"
+   },
+   {
+      "Player Name": "Paul Curran",
+      "G": 0,
+      "A": 2,
+      "Pts": 2,
+      "PIM": 0,
+      "Team": "NL",
+      "Short": "CUr"
+   },
+   {
+      "Player Name": "Mark Stephens",
+      "G": 1,
+      "A": 1,
+      "Pts": 2,
+      "PIM": 0,
+      "Team": "NL",
+      "Short": "Ste"
+   },
+   {
+      "Player Name": "Colin Dodd",
+      "G": 0,
+      "A": 1,
+      "Pts": 1,
+      "PIM": 2,
+      "Team": "CC",
+      "Short": "Dod"
+   },
+   {
+      "Player Name": "Adam Coe",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 0,
+      "Team": "CC",
+      "Short": "Coe"
+   },
+   {
+      "Player Name": "Jay Geneau ",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 0,
+      "Team": "Garner",
+      "Short": "Gen"
+   },
+   {
+      "Player Name": "Dan Lemmon",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 0,
+      "Team": "Cash",
+      "Short": "Lem"
+   },
+   {
+      "Player Name": "Ryan Lightheart",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 0,
+      "Team": "Stayner",
+      "Short": "Lig"
+   },
+   {
+      "Player Name": "Sean Marles",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Mar"
+   },
+   {
+      "Player Name": "Paul McCartney ",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 2,
+      "Team": "NL",
+      "Short": "Mcc"
+   },
+   {
+      "Player Name": "Donnie Thomson ",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 0,
+      "Team": "Belarus",
+      "Short": "Tho"
+   },
+   {
+      "Player Name": "Jeremy Van Severen",
+      "G": 0,
+      "A": 0,
+      "Pts": 0,
+      "PIM": 2,
+      "Team": "CC",
+      "Short": "Van"
+   }
+]
