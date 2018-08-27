@@ -1,190 +1,155 @@
-Colour Theme Background: White Font: Black Accent: CSNHLBlue (#225D7A)
-/*Where are the break points?*/
-
-
-/*It is easier to work from the desktop down to the mobile as mobile 
-css will inherit the desktop styles, but the desktop styles wont inherit the mobile
-styles*/
-
-html body {
-    margin: 0;
-}
-
-body {
-    margin: 0;
-    display: inline;
-}
-
-#root {
-    padding: 5px;
-}
-
-td {
-    padding: 5px;
-}
-
-nav {
-    text-align: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    margin: 5;
-    text-align: center;
-    display: inline-table;
-}
-
-nav a:hover {
-    background: white;
-    color: black;
-    cursor: pointer;
-}
-
-nav:hover {
-    cursor: pointer;
-}
-
-#header{
-    background-color: black;
-    color: white;
-    display: table;
-    width: 100%;
-    border-radius: 0px 0px 10px 10px;
-}
-
-#logo {
-    width: inherit;
-    min-width: 50px;
-    max-width: 100px;
-}
-
-#awards {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-#champs {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    border-radius: 10px;
-}
-
-.sponsorlinks {
-    max-width: 100%;
-    max-height: 70px;
-}
-
-
-/* historySection */
-
-historyYear,
-historyTeam {
-    margin: 20px;
-}
-
-.pageLinks {
-    display: block;
-}
-
-.historyLinkImg {
-    height: 50px;
-}
-
-th {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 19px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 25px;
-    margin: 0px;
-    vertical-align: text-top;
-}
-
-td,
-a {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 200;
-    line-height: 25px;
-    margin: 0px;
-}
-
-h6 {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 200;
-    line-height: 25px;
-    margin: 0px;
-}
-
-h1 {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 27px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 300;
-    line-height: 25px;
-    text-align: left;
-}
-
-h2 {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 35px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 300;
-    line-height: 25px;
-    text-align: left;
-}
-
-p {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 200;
-    line-height: 30px;
-}
-
-blockquote {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 21px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 30px;
-}
-
-pre {
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 18.5667px;
-}
-
-@media screen and (max-width: 685px) {
-    nav a {
-        min-width: 40px;
-        min-height: 15%;
-        padding: 10px;
-    }
-    nav {
-        width: 100%;
-    }
-    
-    #header td{
-        background-color: black;
-    }
-    
-}
+/*Colour Theme Background: White Font: Black Accent: CSNHLBlue (#225D7A)*/
+/*It is easier to work from the desktop down to the mobile as mobile css will inherit the desktop styles, but the desktop styles wont inherit the mobile styles*/
+        
+        #master {
+            float: bottom;
+            width: auto;
+            color: darkgrey;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .desktop {
+            display: table;
+            width: 100%;
+        }
+        
+        .mobile {
+            display: none;
+            width: 100%;
+        }
+        
+        #desknav {
+            padding-top: 10px;
+        }
+        
+        .links {
+            display: inline;
+            color: green;
+            padding-top: 10px;
+            padding-bottom: 2px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        .links:hover {
+            border-bottom: 1px solid black;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        #featureImg {
+            width: 60%;
+        }
+        
+        .standings {
+            display: inline-table;
+            width: 48%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        #standings {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #playerStats {
+            width: 100%;
+            max-width: 700px;
+        }
+        
+        .pageLinks {
+            margin: 25px;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 25px;
+        }
+        
+        historyYear,
+        historyTeam {
+            display: block;
+            text-decoration: none;
+            color: black;
+            font-style: normal;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+        }
+        
+        .sponsorlinks {
+            max-width: 100%;
+        }
+        /*break point for game schedule (past and future)*/
+        
+        @media screen and (max-width: 800px) {
+            .desktop {
+                display: none;
+            }
+            .mobile {
+                display: table;
+                width: 100%;
+            }
+            #featureImg {
+                width: 100%;
+            }
+            #nav {
+                border-bottom: 1px solid black;
+                background-color: white;
+                display: none;
+            }
+            #menuButton {
+                display: block;
+                border: 1px solid black;
+                cursor: pointer;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                text-align: center;
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 18px;
+            }
+            tr,
+            #menubutton,
+            header {
+                background: white;
+            }
+            historyYear,
+            historyTeam {
+                width: auto;
+            }
+            .contact,
+            .section {
+                text-align: center;
+            }
+            li {
+                padding: 10px;
+                margin: 5px;
+                border-bottom: 1px solid black;
+                border-left: 2px solid lightblue;
+            }
+            .pageLinks {
+                width: 80%;
+            }
+            th {
+                background: lightgrey;
+                color: black;
+            }
+        }
+        
+        @media screen and (max-width: 700px) {
+            .standings {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
