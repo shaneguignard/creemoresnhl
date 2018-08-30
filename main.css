@@ -9,12 +9,17 @@
             text-align: center;
         }
         
+		#root, #awards{
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
         .desktop {
             display: table;
             width: 100%;
         }
         
-        .mobile {
+        .mobile, #menuButton {
             display: none;
             width: 100%;
         }
