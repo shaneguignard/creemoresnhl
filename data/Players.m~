@@ -1,11 +1,24 @@
-p = readtable("allPlayers.txt");
-p = sortrows(p, 'name');
+p = readtable("allPlayers.txt")
+p = sortrows(p, 'name')
 
-sp = readtable("allPlayers_sorted.txt", 'Format', '%s%s%n%n%n%n');
+sp = readtable("allPlayers_sorted.txt", 'Format', '%s%s%n%n%n%n')
+games = readtable('csnhl.txt')
+games.date = datetime(games.year+2000, games.month, games.day, games.hour, 0, 0)
+games.year = []
+games.month = []
+games.day = []
+games.hour = games.date
+games(:, end) = []
 
-t = table();
-t.name = unique(sp.name);
-[t.first,t.last] = strtok(t.name); %splits name string into first name and last name
+games.team = string(games.team);
+games.type = categorical(games.type);
+games(games.team == "", :) = [];
+games(games.team == "coatscreek", 'team') == 
+
+
+t = table()
+t.name = unique(sp.name)
+[t.first,t.last] = strtok(t.name) %splits name string into first name and last name
 
 
 i = 1
