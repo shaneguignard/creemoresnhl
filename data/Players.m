@@ -1,47 +1,36 @@
-p = readtable("allPlayers.txt");
-p = sortrows(p, 'name');
-
-sp = readtable("allPlayers_sorted.txt", 'Format', '%s%s%n%n%n%n');
-
+disp('Import Players');
+p = readtable('allPlayers.txt');
+p.name = strtrim(p.name);
 t = table();
-t.name = unique(sp.name);
-[t.first,t.last] = strtok(t.name); %splits name string into first name and last name
+t.name = unique(p.name);
+[t.first,t.last] = strtok(t.name);  %splits name string into first name and last name
+t.name = string(t.name);
+t.first = string(t.first);
+t.last = string(t.last);
+t.last = strtrim(t.last);
 
+i = 1;
+while(i <= length(t.name))
+    temp = p(p.name == t.name(i), :);
+    temp.team = string(temp.team);
+    temp = sortrows(temp, 'date');
+    t.goals(i) = sum(temp.g);
+    t.assists(i) = sum(temp.a);
+    t.points(i) = sum(temp.pts);
+    t.avgPoints(i) = sum(temp.pts)/length(temp.pts);
+    t.penaltyMins(i) = sum(temp.pim);
+    t.joined(i) = temp.date(1) - 1;
+    t.yearsPlayed(i) = length(temp.name);
+    t.belarus(i) = height(temp(temp.team == "Belarus", :));
+    t.stayner(i) = height(temp(temp.team == "Stayner", :));
+    t.garner(i) = height(temp(temp.team == "Garner", :));
+    t.herbtown(i) = height(temp(temp.team == "Herbtown", :));
+    t.newlowell(i) = height(temp(temp.team == "New Lowell", :));
+    t.cashtown(i) = height(temp(temp.team == "Cashtown", :));
+    t.coatescreek(i) = height(temp(temp.team == "Coates Creek", :));
+    i = i + 1;
+end
 
-i = 1
-
-
-
-% 
-% while (i < length(t.name))
-%     goals = [0, 0, 0, 0, 0];
-%     assists = [0, 0, 0, 0, 0];
-%     pts = [0, 0, 0, 0, 0];
-%     pim = [0, 0, 0, 0, 0];
-%     years = 1
-%     j = 1;
-%     n = 1;
-%     while (j < length(p.name))
-%         if (isequal(t.name(i), p.name(j)))
-%             p.name(j)
-%             
-%             goals(n) = p.g(j);
-%             assists(n) = p.a(j);
-%             pts(n) = p.pts(j);
-%             pim(n) = p.pim(j);
-%             years = years + 1;
-%             j = j + 1;
-%             n = n + 1;
-%         else 
-%             j = j + 1;
-%             n = n + 1;
-%         end
-%         
-%     end
-%     t.g(i) = sum(goals);
-%     t.a(i) = sum(assists);
-%     t.pts(i) = sum(pts);
-%     t.pim(i) = sum(pim); 
-%     t.years(i) = years;
-%     i = i + 1;
-% end
+disp(t);
+disp('Export Players');
+writetable(t, 'LeagueSummary.csv');

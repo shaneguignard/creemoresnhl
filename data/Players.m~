@@ -1,31 +1,38 @@
-p = readtable("allPlayers.txt")
-p = sortrows(p, 'name')
+disp('Import Players');
+allPlayers = readtable("allPlayers_sorted.txt", 'Format', '%s%s%n%n%n%n');
+p = readtable('allPlayers.txt');
+p.name = strtrim(p.name);
+t = table();
+t.name = unique(p.name);
+[t.first,t.last] = strtok(t.name);  %splits name string into first name and last name
+t.name = string(t.name);
+t.first = string(t.first);
+t.last = string(t.last);
+t.last = strtrim(t.last);
 
-sp = readtable("allPlayers_sorted.txt", 'Format', '%s%s%n%n%n%n')
-games = readtable('csnhl.txt')
-games.date = datetime(games.year+2000, games.month, games.day, games.hour, 0, 0)
-games.year = []
-games.month = []
-games.day = []
-games.hour = games.date
-games(:, end) = []
+i = 1;
+while(i <= length(t.name))
+    temp = p(p.name == t.name(i), :);
+    temp.team = string(temp.team);
+    temp = sortrows(temp, 'date');
+    t.goals(i) = sum(temp.g);
+    t.assists(i) = sum(temp.a);
+    t.points(i) = sum(temp.pts);
+    t.avgPoints(i) = sum(temp.pts)/length(temp.pts);
+    t.penaltyMins(i) = sum(temp.pim);
+    t.joined(i) = temp.date(1) - 1;
+    t.yearsPlayed(i) = length(temp.name);
+    t.belarus = height(temp.team == "Belarus", :);
+    t.stayner = height(temp.team == "Stayner", :);
+    t.garner = height(temp.team == "Garner", :);
+    t.herbtown = height(temp.team == "Herbtown"
+    i = i + 1;
+end
 
-games.team = string(games.team);
-games.type = categorical(games.type);
-games(games.team == "", :) = [];
-games(games.team == "coatscreek", 'team') == 
+disp(t);
+disp('Export Players');
+writetable(t, 'allPlayers.csv');
 
-
-t = table()
-t.name = unique(sp.name)
-[t.first,t.last] = strtok(t.name) %splits name string into first name and last name
-
-
-i = 1
-
-
-
-% 
 % while (i < length(t.name))
 %     goals = [0, 0, 0, 0, 0];
 %     assists = [0, 0, 0, 0, 0];

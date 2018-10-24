@@ -1,0 +1,8 @@
+teams,teamGoals,teamGames
+belarus,618,148
+cashtown,563,146
+coatescreek,522,126
+garner,381,85
+herbtown,254,62
+newlowell,632,152
+stayner,472,129
