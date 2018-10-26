@@ -64,6 +64,8 @@ var gameDate = [];
 var foundgame = 0;
 
 function schedule_desk() {
+    
+    /*  
     $.ajax({
         type: "GET",
         // Call Json file
@@ -111,7 +113,8 @@ function schedule_desk() {
             console.log('ERROR', textStatus, errorThrown);
         }
     });
-
+*/
+    
 }
 
 
@@ -122,101 +125,48 @@ function loadNextGame() {
     $.ajax({
         type: "GET",
         // Call Json file
-
-        url: "data/gamestats.json",
-
+        url: "old_data/gamestats.json",
         //Declare Json data type
-
         dataType: "json",
-
         cache: false,
-
         contentType: "application/json",
-
         //Function launched if data is loaded successfully from JSON file specified above
-
         success: function (data) {
-
             for (i = 0; i < data.length; i++) {
-
                 gd[i] = data[i][0] - 25568;
-
                 gd[i] = gd[i] * 24 * 60 * 60 * 1000;
-
                 gameDay[i] = new Date(gd[i]).getDate();
-
                 gameMon[i] = new Date(gd[i]).getMonth();
-
                 gameYear[i] = new Date(gd[i]).getFullYear();
-
                 gameDate[i] = month[gameMon[i]] + ' ' + gameDay[i] + ', ' + gameYear[i];
-
-
-
                 var today = new Date().getTime();
-
                 if (gd[i] >= today) {
-
                     nextGameArray.push('Next Game <br>' + gameDate[i], data[i][1] + " vs " + data[i][3], data[i][5] + " vs " + data[i][7], data[i][9] + " vs " + data[i][11])
-
                     foundgame = 1;
-					console.log(nextGameArray, found)
+					console.log(nextGameArray, found);
                     break;
-
                 }
-
-
-
             }
-
             if (nextGameArray.length > 0) {
-
                 var result = nextGameArray.join('');
-
                 document.getElementById('nextGame').innerHTML = result;
-
                 console.log(nextGameArray);
-
             } else {
-
                 document.getElementById('nextGame').innerHTML = "No Upcoming Games";
-
                 console.log('no games');
-
             }
-
             return
-
             //            document.getElementById('buttonArea').innerHTML = "<a class='button' onclick='fullSchedule()'>Load The Full Schedule</a>";
-
         },
-
         //Function launched if data  loaded from JSON file contains errors
-
         error: function (jqXHR, textStatus, errorThrown) {
-
             //Outputs Error Status information in console
-
             console.log('ERROR', textStatus, errorThrown);
-
-
-
         }
-
     });
-
 }
 
-
-
-
-
-
-
 function highlight(team) {
-
-
-
     /*MAKE SWITCH CASE STATEMENT SO THAT IF TEAM = CASE THEN CHANGE COLOURS TO SPECIFIC TEAMS COLOURS*/
 
     var elements = document.getElementsByClassName(team);
