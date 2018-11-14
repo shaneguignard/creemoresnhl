@@ -1,5 +1,5 @@
 disp('Import Players');
-p = readtable('allPlayers.txt');
+p = readtable('allPlayers.csv');
 p.name = strtrim(p.name);
 t = table();
 t.name = unique(p.name);
@@ -14,11 +14,12 @@ while(i <= length(t.name))
     temp = p(p.name == t.name(i), :);
     temp.team = string(temp.team);
     temp = sortrows(temp, 'date');
-    t.goals(i) = sum(temp.g);
-    t.assists(i) = sum(temp.a);
-    t.points(i) = sum(temp.pts);
+    t.totalGoals(i) = sum(temp.g);
+    t.totalAssists(i) = sum(temp.a);
+    t.totalPoints(i) = sum(temp.pts);
+    t.totalPenaltyMins(i) = sum(temp.pim);
     t.avgPoints(i) = sum(temp.pts)/length(temp.pts);
-    t.penaltyMins(i) = sum(temp.pim);
+    t.avgPIM(i) = sum(temp.pim)/length(temp.pim);
     t.joined(i) = temp.date(1) - 1;
     t.yearsPlayed(i) = length(temp.name);
     t.belarus(i) = height(temp(temp.team == "Belarus", :));
@@ -34,3 +35,8 @@ end
 disp(t);
 disp('Export Players');
 writetable(t, 'LeagueSummary.csv');
+
+% CREATE INDIVIDUAL PLAYERS TABLES BY YEAR
+
+
+% CREATE AWARDS TABLE
