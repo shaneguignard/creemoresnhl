@@ -10,7 +10,7 @@
     <!--Import Style sheet-->
     <link rel="stylesheet" type="text/css" href="main.css">
     <!--Import Jquery for JS functions-->
-    <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+<!--    <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>-->
 </head>
 
 <body>
@@ -18,10 +18,10 @@
         <table width="100%">
             <tr>
                 <td rowspan='3'>
-                    <img src="images/logo.png" />
+                    <img id='logo' src="images/logo.png" />
                 </td>
                 <td rowspan="2">
-                    <h1>Creemore Sunday Night Hockey League</h1>
+                    <h1 id='headerName'>Creemore Sunday Night Hockey League</h1>
                 </td>
             </tr>
         </table>
@@ -112,7 +112,7 @@
             <h5>GAME SCHEDULE</h5>
             <div id='nextGame'>Banner</div>
             <a class="button" target="_blank" href="printschedule.html">Print Schedule</a>
-            <table name="schedule_table" class='desktop' id="schedule_table" border='1' title='futureGames'>
+            <table name="schedule_table" class='desktop' id="deskSchedule" border='1' title='futureGames'>
                 <tr>
                     <th rowspan="2">Date</th>
                     <th colspan="3">7PM</th>
@@ -132,7 +132,7 @@
                 </tr>
 
             </table>
-            <table id='mobileSchedule' border='' class='mobile' title="futureGames">
+            <table id='mobileSchedule' border='1' class='mobile' title="futureGames">
                 <tr>
                     <th colspan='3'>Date</th>
                 </tr>
@@ -399,49 +399,56 @@
             <h1>HISTORY</h1>
             <div id="historylinks">
                 <div class="pageLinks">
-                    <a href="2016winners.html">
+                    <a href="history/2017winners.html">
+                        <img class='historyLinkImg' src="images/logo.png">
+                        <historyYear>2017/2018</historyYear>
+                        <historyTeam>Stayner</historyTeam>
+                    </a>
+                </div>
+                <div class="pageLinks">
+                    <a href="history/2016winners.html">
                         <img class='historyLinkImg' src="images/logo.png">
                         <historyYear>2016/2017</historyYear>
                         <historyTeam>Stayner</historyTeam>
                     </a>
                 </div>
                 <div class="pageLinks">
-                    <a href="2015winners.html">
+                    <a href="history/2015winners.html">
                         <img class='historyLinkImg' src="images/logo.png">
                         <historyYear>2015/2016</historyYear>
                         <historyTeam>New Lowell</historyTeam>
                     </a>
                 </div>
                 <div class="pageLinks">
-                    <a href="2014winners.html">
+                    <a href="history/2014winners.html">
                         <img class='historyLinkImg' src="images/logo.png">
                         <historyYear>2014/2015</historyYear>
                         <historyTeam>Coates Creek</historyTeam>
                     </a>
                 </div>
                 <div class="pageLinks">
-                    <a href="2013winners.html">
+                    <a href="history/2013winners.html">
                         <img class='historyLinkImg' src="images/logo.png">
                         <historyYear>2013/2014</historyYear>
                         <historyTeam>Belarus</historyTeam>
                     </a>
                 </div>
                 <div class="pageLinks">
-                    <a href="oldsite/csnhl2012-2013.html" target="_page">
+                    <a href="history/2012winners.html" target="_page">
                         <img src="images/logo.png">
                         <historyYear>2012/2013</historyYear>
                         <historyTeam>Belarus</historyTeam>
                     </a>
                 </div>
                 <div class="pageLinks">
-                    <a href="oldsite/csnhl2011-2012.html" target="_page">
+                    <a href="history/2011winners.html" target="_page">
                         <img src="images/logo.png">
                         <historyYear>2011/2012</historyYear>
                         <historyTeam>Garner</historyTeam>
                     </a>
                 </div>
                 <div class="pageLinks">
-                    <a href="oldsite/csnhl2010-2011.html" target="_page">
+                    <a href="history/2010winners.html" target="_page">
                         <img src="images/logo.png">
                         <historyYear>2010/2011</historyYear>
                         <historyTeam>Cashtown Whiskey Jacks</historyTeam>
@@ -457,48 +464,48 @@
             <div class="contact">
                 <h2>President</h2>
                 <address>Shawn Hughson
-		<br>705-796-7536
-		<br><a href="mailto:shawnhughson@gmail.com">shawnhughson@gmail.com</a></address>
+                    <br>705-796-7536
+                    <br><a href="mailto:shawnhughson@gmail.com">shawnhughson@gmail.com</a></address>
             </div>
 
             <div class="contact">
                 <h2>Team: Garner Maroons</h2>
                 <address>Sean Hayward
-		<br>705-720-4252
-		<br><a href="mailto:sean07@rogers.com">sean07@rogers.com</a></address>
+                    <br>705-720-4252
+                    <br><a href="mailto:sean07@rogers.com">sean07@rogers.com</a></address>
             </div>
 
             <div class="contact">
                 <h2>Team: Belarus</h2>
                 <address>Wade Marsh
-		<br>705-428-5575
-		<br><a href="mailto:wmarsh@belarus.ca">wmarsh@belarus.ca</a></address>
+                    <br>705-428-5575
+                    <br><a href="mailto:wmarsh@belarus.ca">wmarsh@belarus.ca</a></address>
             </div>
 
             <div class="contact">
                 <h2>Team: Stayner Wolf Pack</h2>
                 <address>Mike Foster
-		<br>705-466-5244</address>
+                    <br>705-466-5244</address>
             </div>
 
             <div class="contact">
                 <h2>Team: Cashtown Whiskey Jacks</h2>
                 <address>Ed Van Severen
-		<br>705-466-3754
-		<br><a href="mailto:edvanseveren@gmail.com">edvanseveren@gmail.com</a></address>
+                    <br>705-466-3754
+                    <br><a href="mailto:edvanseveren@gmail.com">edvanseveren@gmail.com</a></address>
             </div>
 
             <div class="contact">
                 <h2>Team: New Lowell Hawks</h2>
                 <address>Rich Gill
-		<br>705-424-7616
-		<br><a href="mailto:richgill@live.ca">richgill@live.ca</a></address>
+                    <br>705-424-7616
+                    <br><a href="mailto:richgill@live.ca">richgill@live.ca</a></address>
             </div>
 
             <div class="contact">
                 <h2>Team: Coates Creek</h2>
                 <address>Jeremy Van Severen
-		<br>705-424-1773</address>
+                    <br>705-424-1773</address>
             </div>
         </div>
         <!-- SPONSORS -->
@@ -513,41 +520,15 @@
     <div id="master" align="center">Designed for the Creemore Sunday Night Hockey League by Shane Guignard 2017.</div>
 </body>
 <script src="functions.js"></script>
+<!--Import teamStats and Player databases-->
+<script src='data/leagueSummary.js'></script>
+<script src='data/teamStats.js'></script>
+    
 <script>
-    schedule_desk();
-    loadNextGame();
-    gamestats();
-    //creates a simple drop down menu for mobile users
-    function displayMenu(open) {
+    nextGame();
+    makeSchedule(a, i, g);
+    schedule(g);
 
-        var menuButton = document.getElementById("menuButton");
-        var navMenu = document.getElementById("nav");
-        if (open == false) {
-            menuButton.style = "display:none;";
-            navMenu.style = "display:block;";
-        }
-        if (open == true) {
-            menuButton.style = "display: block;";
-            navMenu.style = "display:none;";
-        }
-
-    }
-
-    //sticky navbar
-    window.onscroll = function() {
-        stickyNav()
-    }
-
-    var navbar = document.getElementById('nav');
-    var sticky = navbar.offsetTop;
-
-    function stickyNav() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add(sticky);
-        } else {
-            navbar.classList.remove(sticky);
-        }
-    }
 </script>
 
 </html>

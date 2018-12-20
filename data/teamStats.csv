@@ -1,8 +1,8 @@
-teams,teamGoals,teamGames
-belarus,618,148
-cashtown,563,146
-coatescreek,522,126
-garner,381,85
-herbtown,254,62
-newlowell,632,152
-stayner,472,129
+teams,totalGames,totalGoals,avgGameGoals,avgSeasonGoals,bestGame,bestGameDate,bestYear,bestYearDate,worstGame,worstGameDate,worstYear,worstYearDate
+stayner,129,472,3.65891472868217,67.4285714285714,13,,136,,0,,,,27,
+coatescreek,126,522,4.14285714285714,74.5714285714286,10,,102,,0,,,,37,
+herbtown,62,254,4.09677419354839,63.5,9,,88,,1,,,,30,
+belarus,148,618,4.17567567567568,77.25,12,,139,,0,,,,42,
+newlowell,152,632,4.15789473684211,79,11,,139,,0,,,,34,
+cashtown,146,563,3.85616438356164,70.375,11,,136,,0,,,,33,
+garner,85,381,4.48235294117647,76.2,12,,138,,1,,,,38,
