@@ -69,6 +69,7 @@
 
 #nextGame tr:hover{
     background: black;
+    color: white;
 }
 
 .links:hover {

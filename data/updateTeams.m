@@ -2,18 +2,40 @@
 disp('Load history file');
 history = readtable('history.csv');
 % teamStats = readtable('teamStats.csv');
+historyt = table2timetable(history);
 
 
 % ADD NEW GAMES TO HISTORY
 % Export from scoresheet.html (php to generate file)
 % Import file
-% newGame = readtable('newGame.csv');
+newGame = readtable('newGame.csv');
+
+newGame.date = datetime(newGame.date);
+a = string(newGame.type);
+newGame.type = a.lower;
+b = split(newGame.player, '-');
+newGame.player = b(:,2);
 % use specific data to update Players
+% Players.m
+Players
+
+% Merge timetables
+newGamett = table2timetable(newGame);
+
+
+% Once score is approved, update historytt
+historytt = [historyt; newGamett];
+
+
 % use specific data to update Teams
-% Merge newGame table to history table
+
+
+
 
 %Upload games history
 disp('Update games history');
+%  make historytt to initiate update
+history = timetable2table(historytt);
 writetable(history, 'history.csv');
 
 %update teamStats
@@ -48,8 +70,8 @@ end
 for k = 1: length(uniqueYears)
     years(k) = height(temp(year(temp.date) == uniqueYears(k) & temp.type == 'goal', 'type'));
 end
-gameSums = table(uniqueDates, games')
-yearSums = table(uniqueYears, years')
+gameSums = table(uniqueDates, games');
+yearSums = table(uniqueYears, years');
 
 % Best Game
 teamBestGame(i) = max(gameSums.Var2);
