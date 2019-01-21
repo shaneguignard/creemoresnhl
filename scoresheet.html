@@ -35,6 +35,18 @@
             width: 100%;
         }
         
+        #lightScore, #darkScore{
+            font-size: 24pt;
+            text-align: center;
+            border: 0px;
+            
+        }
+        #lightTeamName, #darkTeamName {
+            border:0px;
+            font-size: 18pt;
+            width: 200px;
+            
+        }
         input[type=button], input[type=submit], select {
             width: 200px;
             height: 40px;
@@ -50,9 +62,11 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 30%;
+            width: auto;
         }
- 
+        input[type=point]{
+            width:auto;
+        }
         
 
         #lightShots,
@@ -92,19 +106,19 @@
             </thead>
             <tr>
                 <td colspan="2">
-                    <h1 id="lightScore">0</h1>
+                    <input id='lightScore' type='text' name="lightGoals" value='0'>
                 </td>
                 <td colspan="2">
-                    <h1 id="darkScore">0</h1>
+                    <input id='darkScore' type='text' name="darkGoals" value='0'>
                 </td>
             </tr>
             <tr>
-                <td id="lightTeamName" colspan="1"></td>
-                <td colspan="1">Shots:
+                <td><input id="lightTeamName" type='text' name='lightTeam'></td>
+                <td>Shots:
                     <h3 id="lightShots">0</h3>
                 </td>
-                <td id="darkTeamName" colspan="1"></td>
-                <td colspan="1">Shots:
+                <td><input id="darkTeamName" type='text' name='darkTeam'></td>
+                <td>Shots:
                     <h3 id="darkShots">0</h3>
                 </td>
             </tr>
@@ -113,7 +127,7 @@
                 <td colspan="2">
                     <input type="text" name="playedAt" placeholder="Area" value="Creemore Arena"></td>
                 <td colspan="2">
-                    <input type="text" name="gameDate" readonly>
+                    <input type="text" name="gameDate" read-only>
                 </td>
             </tr>
             <tr>
@@ -150,10 +164,7 @@
         <div id='darks'>
             <select id="dark" onchange="update(players);"></select>
             <select id='darkplayers'></select>
-            <select id='darktype'>
-                <option value='Goal' name='type'>Goal</option>
-                <option value='Penalty' name='type'>Penalty</option>
-            </select>
+            <select id='darktype'></select>
             <input type='button' value="Add" onclick="add('dark', darktype.value, dark.value, darkplayers.value);">
         </div>
 
@@ -163,8 +174,8 @@
         <table id='summary' border=1>
             <tr>
                 <th>Time (mm:ss)</th>
-                <th>Period</th>
-<!--                <th>Game Time</th>-->
+                <!--                <th>Period</th>-->
+                <!--                <th>Game Time</th>-->
                 <th>Type</th>
                 <th>Team</th>
                 <th>Player</th>
@@ -176,9 +187,9 @@
         <input type="submit" value="End Game" style="margin-top:10px;">
     </form>
 </body>
-    
-    The undo should also subtract from scores and shots totals
-    
+
+Note: Undo does not currently subtract from Goals and Shots totals displayed here.
+
 <script src='data/leagueSummary.js'></script>
 <script src='data/teamStats.js'></script>
 <script>
@@ -216,14 +227,14 @@
         //var playersHtml = [];
         for (var i = 0; i < a.length; i++) {
             players.push([]);
-            
+
             teams.push(a[i].teams);
             teamsHtml.push("<option value='" + a[i].teams + "'>" + a[i].teams + "</option>");
         }
         var s = teamsHtml.join('');
         lightteams.innerHTML = s;
         darkteams.innerHTML = s;
-        
+
         for (var p = 0; p < b.length; p++) {
             for (var t = 0; t < a.length; t++) {
                 if (b[p].currentTeam == teamStats[t].teams && b[p].lastModified == 2018) {
@@ -254,8 +265,8 @@
         var dar = players[darkteams.selectedIndex];
         var lightsHtml = [];
         var darksHtml = [];
-        document.getElementById('lightTeamName').innerHTML = lightteams.value;
-        document.getElementById('darkTeamName').innerHTML = darkteams.value;
+        document.getElementById('lightTeamName').value = lightteams.value;
+        document.getElementById('darkTeamName').value = darkteams.value;
 
 
         for (i = 0; i < lar.length; i++) {
@@ -272,9 +283,6 @@
 
     //O(1)
     function add(side, type, team, player) {
-        //var type = document.getElementById(side + 'type').value;
-        //var player = document.getElementById(side + 'players').value;
-        //var team = document.getElementById(team).value;
         var body = document.getElementsByTagName('body')[0];
         var popup = document.getElementById('popup');
         var time = new Date();
@@ -282,12 +290,13 @@
         if (type == "Shot") {
             if (side == "light") {
                 lightShots++;
-                player = null;
+                player = '-';
                 document.getElementById("lightShots").innerHTML = lightShots;
                 console.log(side, type, team, player, lightShots);
             }
             if (side == "dark") {
                 darkShots++;
+                player = '-'
                 document.getElementById("darkShots").innerHTML = darkShots;
                 console.log(side, type, team, player, darkShots);
             }
@@ -295,18 +304,23 @@
         if (type == "Goal") {
             if (side == "light") {
                 lightGoals++;
-                document.getElementById("lightScore").innerHTML = lightGoals;
+                document.getElementById("lightScore").value = lightGoals;
                 console.log(side, type, team, player, lightGoals);
             }
             if (side == "dark") {
                 darkGoals++;
-                document.getElementById("darkScore").innerHTML = darkGoals;
+                document.getElementById("darkScore").value = darkGoals;
                 console.log(side, type, team, player, darkGoals);
             }
         }
 
+        if (time.getHours() < 12) {
+            time = (time.toLocaleTimeString()).replace(' AM', '');
+        } else {
+            time = (time.toLocaleTimeString()).replace(' PM', '');
+        }
         //Populate 
-        var newPoint = '<tr><td><input type="point" name="time[]" style="width:50px;" value="' + time.toLocaleTimeString() + '" readonly></td><td><input type="point" name="period[]" value="0" style="width:20px;" placeholder="0"></td><td><input type="point" name="type[]" value="' + type + '" readonly></td><td><input type="point" name="team[]" value="' + team + '" readonly></td></td><td><input type="point" name="player[]" value="' + player + '"></td></tr>';
+        var newPoint = '<tr><td><input type="point" name="time[]" style="width:50px;" value="' + time + '" readonly></td><td><input type="point" name="type[]" value="' + type + '" readonly></td><td><input type="point" name="team[]" value="' + team + '" readonly></td></td><td><input type="point" name="player[]" value="' + player + '"></td></tr>';
         row++;
         // Edits made in summary are not perminent after new point is added to list.
 
@@ -323,11 +337,11 @@
             points.pop();
             document.getElementById('summary').deleteRow(row);
             row = row - 1;
-            
-//            lightShots = 0;
-//            lightGoals = 0;
-//            darkShots = 0;
-//            darkGoals = 0;
+
+            //            lightShots = 0;
+            //            lightGoals = 0;
+            //            darkShots = 0;
+            //            darkGoals = 0;
         }
     }
 
@@ -336,7 +350,7 @@
 
         //loop throught the add(side, type, team, player) function.
 
-        
+
     }
 
 

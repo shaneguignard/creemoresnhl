@@ -35,7 +35,7 @@ historytt = [historyt; newGamett];
 %Upload games history
 disp('Update games history');
 %  make historytt to initiate update
-history = timetable2table(historytt);
+%history = timetable2table(historytt);
 writetable(history, 'history.csv');
 
 %update teamStats
@@ -91,6 +91,9 @@ teamWorstYearDate(i) = {yearSums(yearSums.Var2 == min(yearSums.Var2), 'uniqueYea
 teamGames(i) = length(unique(temp.date)); % height of table produced by unique game dates played by specific team
 end
 
+
+
+
 % tempgame = history(history.date == date(1), :);
 % gameteams = unique(tempgame.team);
 % teamStats = [teamStats, table(0, 'VariableNames', {[char(gameteams(2))]})]
@@ -116,6 +119,15 @@ teamStats.worstGameDate = teamWorstGameDate';
 teamStats.worstYear = teamWorstYear';
 teamStats.worstYearDate = teamWorstYearDate';
 
+temp = [];
+gameday = unique(history.date);
+% Current Season team stats
+gameday = gameday(year(gameday) > 2017, :);
+curr = table();
+for i = 1: length(gameday)
+    temp = history(history.date == gameday(i), :);
+    
+end
 % Total assist
 % Total penalty mins
 % Total points
