@@ -171,7 +171,7 @@
             <table name="gameStats_table" class='desktop' id="deskGamesPast" border='1' title='PastGames'>
                 
                 <?php
-                include_once('remote-mysql.php');
+                include_once('current-mysql.php');
                 $sql = "SELECT * FROM pastgames";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
