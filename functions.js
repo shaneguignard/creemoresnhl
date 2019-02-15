@@ -26,29 +26,35 @@ console.log("Last Season: " + lastSeasonYear);
 var cy = [];
 var ly = [];
 
-// Assign cy array to "currentSeasonYear" class
-cy = document.getElementsByClassName("currentSeasonYear");
 
-// For every class with "currentSeasonYear" apply current year date to innerHTML
-for (var i = 0; i < cy.length; i++) {
-    cy[i].innerHTML = currentSeasonYear;
+try {
+    // Assign cy array to "currentSeasonYear" class
+    cy = document.getElementsByClassName("currentSeasonYear");
+    // For every class with "currentSeasonYear" apply current year date to innerHTML
+    for (var i = 0; i < cy.length; i++) {
+        cy[i].innerHTML = currentSeasonYear;
+    }
+
+    // Assign ly array to "lastSeasonYear" class
+    ly = document.getElementsByClassName("previousYear");
+
+    // For every tag with class "lastSeasonYear" apply last year date to innerHTML
+    for (var i = 0; i < ly.length; i++) {
+        ly[i].innerHTML = lastSeasonYear;
+    }
+    
+    // Season Winners
+    var previousYearWinners = "Stayner";
+    document.getElementById("seasonWinners").innerHTML = previousYearWinners;
+
+    //Supporting Picture
+
+    var champsPicture = "images/2018_winners.jpeg";
+    document.getElementById("featureImg").src = champsPicture;
+} catch (err) {
+    console.log("No class for current season year found: ", err);
 }
 
-// Assign ly array to "lastSeasonYear" class
-ly = document.getElementsByClassName("previousYear");
-
-// For every tag with class "lastSeasonYear" apply last year date to innerHTML
-for (var i = 0; i < ly.length; i++) {
-    ly[i].innerHTML = lastSeasonYear;
-}
-
-// Season Winners
-var previousYearWinners = "Belarus";
-document.getElementById("seasonWinners").innerHTML = previousYearWinners;
-
-//Supporting Picture
-var champsPicture = "images/2017_winners.jpeg";
-document.getElementById("featureImg").src = champsPicture;
 
 // End season instance update 
 
@@ -72,135 +78,21 @@ function displayMenu(open) {
 
 }
 
-// Determines next game day
-function nextGame() {
-    // Get day of the month of page instance
-    t.getDate()
-    //use input "mock Day" to set todays date
-    var a = new Date(t);
-    //determine the number of days till next sunday
-    var b = 7 - a.getDay();
-    //determine what day of the month it is
-    var c = a.getDate();
-    //add difference till next sunday to day of the month
-    a.setDate(b + c);
-    a.setHours(19, 0, 0);
-    //Use new day of month to print date of next sunday
-    var banner = document.getElementById('nextGame');
-    var g = [];
-
-    g.push("<table border='0'><th colspan=3>" + a.toDateString() + "</th>");
-    g.push("<tr><td>7pm</td><td>Team 1 vs.</td><td>Team 2</td></tr>");
-    g.push("<tr><td>8pm</td><td>Team 3 vs.</td><td>Team 4</td></tr>");
-    g.push("<tr><td>9pm</td><td>Team 5 vs.</td><td>Team 6</td></tr></table>");
-    var temp = g.join('');
-    banner.innerHTML = temp;
-    console.log('Next Game: ' + a);
-    return a;
-}
-
-
-// Recursive function to determine schedule for the upcoming year skipping christmas/ new years and super bowl sunday (first sunday of february)
-var a = new Date();
-var i = 0;
-a.setFullYear(currentSeasonYear.split('/')[0], 9, 10);
-g = [];
-
-function makeSchedule(a, i, g) {
-
-    var b = 7 - a.getDay();
-    var c = a.getDate();
-    a.setDate(b + c);
-
-    if ((a.getMonth() == 11 && a.getDate() > 23) || (a.getMonth() == 0 && a.getDate() < 2)) {
-        console.log("Happy Holidays");
-        return makeSchedule(a, i, g);
-    } else if (a.getMonth() == 1 && a.getDate() < 7) {
-        console.log("Superbowl Sunday");
-        return makeSchedule(a, i, g);
+// collapsing nav header
+var MB = document.getElementById('menuButton');
+var logo = document.getElementById('logo');
+var csnhl = document.getElementById('headerName');
+var h = document.getElementById('header');
+window.onscroll = function () {
+    if (window.pageYOffset > 100 && window.innerWidth < 450 ) {
+        MB.style = 'width: 50px; position:fixed; top:0px; right: 5px;font-size: 10pt;';
+        logo.style = 'height: 50px;';
+        csnhl.style = 'font-size: 12pt; width:210px;';
+        h.style = 'border-bottom: 1px solid black;';
+    } else if(window.innerWidth < 450) {
+        MB.style = 'width: 100%;';
+        csnhl.style = 'font-size: 18pt;';
+        logo.style = 'height: 75px;';
+        h.style = 'border: none;'
     }
-    if (i == 22) {
-        console.log('Done');
-        return;
-    }
-    console.log(i);
-    g[i] = new Date(a.setHours(19, 0, 0));
-    //console.log(g);
-    //push to array or something
-    return makeSchedule(a, ++i, g);
-}
-
-function schedule(g) {
-    var x = 0;
-    var regularSeason = [0,1,2,3,4,5,3,5,0,2,1,4,1,5,2,4,0,3,0,4,1,3,2,5,3,4,0,5,1,2,2,3,4,5,0,1, 0,2,1,4,3,5,2,4,0,3,1,5,1,3,2,5,0,4,0,5,1,2,3,4,4,5,0,1,2,3,1,4,3,5,0,2,0,3,1,5,2,4,2,5,0,4,1,3,1,2,3,4,0,5];
-    var roundRobin = [0, 5, 1, 4, 2, 3, 0, 4, 1, 3, 2, 5, 0, 3, 1, 2, 4, 5, 0, 2, 1, 5, 3, 4, 0, 1, 2, 4, 3, 5];
-    var playoffs = [];
-    mobileSchedule = document.getElementById('mobileSchedule');
-    mobileTable = [];
-    deskSchedule = document.getElementById('deskSchedule');
-    deskTable = [];
-
-    s = [];
-    s[0] = new Date(g[i].setHours(19));
-    s[1] = new Date(g[i].setHours(20));
-    s[2] = new Date(g[i].setHours(21));
-
-    var games = 22;
-
-    for (var day = 0; day < games; day++) {
-        switch (day) {
-            case 0:
-                deskTable.push("<tr><th colspan='10'>Regular Season</th></tr>");
-                deskTable.push("<tr><th>Date</th><th colspan='3'>7PM</th><th colspan='3'>8PM</th><th colspan='3'>9PM</th></tr>");
-                mobileTable.push("<tr><th colspan='3'>Regular Season</th></tr>");
-                break;
-            case 11:
-                deskTable.push("<tr><th colspan='10'>Happy Holidays</th></tr>");
-                mobileTable.push("<tr><th colspan='3'>Happy Holidays</th></tr>");
-                break;
-
-            case 15:
-                deskTable.push("<tr><th  colspan='10'>Round Robin</th></tr>");
-                mobileTable.push("<tr><th colspan='3'><h3>Round Robin</h3></th></tr>");
-                break;
-            case 20:
-                deskTable.push("<tr><th  colspan='10'>Playoffs</th></tr>");
-                mobileTable.push("<tr><th colspan='3'><h3>Playoffs</h3></th></tr>");
-                break;
-
-
-        }
-        mobileTable.push("<tr><th colspan='3'>" + g[day].toDateString() + "</th></tr>");
-        deskTable.push("<tr class='regSeason'><th rowspan='1'>" + g[day].toDateString() + "</th>");
-
-        for (var hour = 0; hour < s.length; hour++) {
-            if (x + 2 > regularSeason.length) {
-                x = 0;
-                console.log('reset');
-            }
-
-            if (day < 15) {
-                mobileTable.push("<tr class='regSeason'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
-                mobileTable.push("<tr class='roundRobin'><td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[x + 1]].teams).toUpperCase() + "</td></tr>");
-                deskTable.push("<td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[++x]].teams).toUpperCase() + "</td>");
-            } else {
-                mobileTable.push("<tr class='roundRobin'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
-                mobileTable.push("<tr class='roundRobin'><td>" + (roundRobin[x] + 1) + "</td><td>vs</td><td>" + (roundRobin[x + 1] + 1) + "</td></tr>");
-                deskTable.push("<td>" + (roundRobin[x] + 1) + "</td><td>vs</td><td>" + (roundRobin[++x] + 1) + "</td>");
-            }
-            
-            // Code in playoffs based on results of round robin
-            
-            ++x;
-
-        }
-        deskTable.push("</tr>");
-
-
-    }
-    var mobiletemp = mobileTable.join('');
-    var desktemp = deskTable.join('');
-    mobileSchedule.innerHTML = mobiletemp;
-    deskSchedule.innerHTML = desktemp;
-    return;
 }

@@ -18,7 +18,7 @@
     $arrPlayer = $_POST["player"];
 
     if($tkpwd === '1234'){
-        require_once('remote-mysql.php');
+        require_once('history-mysql.php');
     }
     else 
     {
