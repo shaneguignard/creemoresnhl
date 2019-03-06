@@ -58,9 +58,10 @@
                 }
                     ?>
             </table>
+            <h3>Previous Games</h3>
             <table class='mobile' id='mobileGamesPast' title="PastGames" cellspacing='0' cellpadding='0'>
                 <?php
-                $sql = "SELECT * FROM PastGames";
+                $sql = "SELECT * FROM PastGames ORDER BY date desc";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row

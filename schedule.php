@@ -16,7 +16,7 @@
             <h1>SCHEDULE</h1>
             <h5 class='currentSeasonYear'></h5>
             <h5>GAME SCHEDULE</h5>
-            <div class='tablet' id='nextgame' onclick="nextgame();">Next Game</div>
+            
             <!--            <a class="button" target="_blank" href="printschedule.html">Print Schedule</a>-->
             <table name="schedule_table" class='desktop' id="deskSchedule" title='futureGames' cellpadding='0' cellspacing='0'>
                 <tr>
@@ -67,6 +67,7 @@
                     <td>9away</td>
                 </tr>
             </table>
+            <div class='tablet' id='nextgame' onclick="schedule(g, true);">See Full Schedule</div>
         </div>
 
     </div>
@@ -80,10 +81,11 @@
     // Recursive function to determine schedule for the upcoming year skipping christmas/ new years and super bowl sunday (first sunday of february)
     var a = new Date();
     a.setFullYear(currentSeasonYear.split('/')[0], 9, 10);
-    
+
     var i = 0;
     var rrteams = [];
     g = [];
+
 
     function makeSchedule(a, i, g) {
 
@@ -110,7 +112,7 @@
     }
 
 
-    function schedule(g) {
+    function schedule(g, fold = false) {
         var x = 0;
         var games = 22;
         var curr = false;
@@ -118,49 +120,64 @@
         var roundRobin = [0, 5, 1, 4, 2, 3, 0, 4, 1, 3, 2, 5, 0, 3, 1, 2, 4, 5, 0, 2, 1, 5, 3, 4, 0, 1, 2, 4, 3, 5];
         var rrteams = ['STAYNER', 'NEW LOWELL', 'COATES CREEK', 'CASHTOWN', 'HERBTOWN', 'BELARUS']
         var playoffs = [];
-        
+
         var mobileSchedule = document.getElementById('mobileSchedule');
         var mobileTable = [];
         var deskSchedule = document.getElementById('deskSchedule');
         var deskTable = [];
         var s = [];
-        
+
         s[0] = new Date(g[i].setHours(19));
         s[1] = new Date(g[i].setHours(20));
         s[2] = new Date(g[i].setHours(21));
 
 
-        for (var day = 0; day < games; day++) {
 
+        for (var day = 0; day < games; day++) {
+            if (g[day] > t) {
+                fold = true;
+            }
             switch (day) {
                 case 0:
                     deskTable.push("<tr><th colspan='10'>Regular Season</th></tr>");
                     deskTable.push("<tr><th>Date</th><th colspan='3'>7PM</th><th colspan='3'>8PM</th><th colspan='3'>9PM</th></tr>");
-                    mobileTable.push("<tr><th colspan='3'><h3>Regular Season</h3></th></tr>");
+                    if (fold) {
+                        mobileTable.push("<tr><th colspan='3'><h3>Regular Season</h3></th></tr>");
+                    }
                     break;
                 case 11:
                     deskTable.push("<tr><th colspan='10'>Happy Holidays</th></tr>");
-                    mobileTable.push("<tr><th colspan='3'>Happy Holidays</th></tr>");
+                    if (fold) {
+                        mobileTable.push("<tr><th colspan='3'>Happy Holidays</th></tr>");
+                    }
                     break;
 
                 case 15:
                     deskTable.push("<tr><th  colspan='10'>Round Robin</th></tr>");
-                    mobileTable.push("<tr><th colspan='3'><h3>Round Robin</h3></th></tr>");
+
+                    if (fold) {
+                        mobileTable.push("<tr><th colspan='3'><h3>Round Robin</h3></th></tr>");
+                    }
                     break;
                 case 20:
                     deskTable.push("<tr><th  colspan='10'>Playoffs</th></tr>");
-                    mobileTable.push("<tr><th colspan='3'><h3>Playoffs</h3></th></tr>");
+                    if (fold) {
+                        mobileTable.push("<tr><th colspan='3'><h3>Playoffs</h3></th></tr>");
+                    }
                     break;
-
-
             }
-            if (g[day] > t && !curr) {
-                console.log('Next: ' + g[day]);
-                mobileTable.push("<tr><td id='mtoday' colspan='3'><h3>Next Game</h3></td></tr>");
-                deskTable.push("<tr><td id='dtoday' colspan='10'>Next Game</td></tr>");
-                curr = true;
+
+            if (fold) {
+                if (g[day] > t && !curr && fold) {
+                    console.log('Next: ' + g[day]);
+                    mobileTable.push("<tr><td id='mtoday' colspan='3'><h3>Next Game</h3></td></tr>");
+                    deskTable.push("<tr><td id='dtoday' colspan='10'>Next Game</td></tr>");
+                    curr = true;
+                }
             }
-            mobileTable.push("<tr><th colspan='3'>" + g[day].toDateString() + "</th></tr>");
+            if (fold) {
+                mobileTable.push("<tr><th colspan='3'>" + g[day].toDateString() + "</th></tr>");
+            }
             deskTable.push("<tr class='regSeason'><th rowspan='1'>" + g[day].toDateString() + "</th>");
 
             for (var hour = 0; hour < s.length; hour++) {
@@ -169,12 +186,16 @@
                     console.log('reset');
                 }
                 if (day <= 14) {
-                    mobileTable.push("<tr class='regSeason'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
-                    mobileTable.push("<tr class='regSeason'><td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[x + 1]].teams).toUpperCase() + "</td></tr>");
+                    if (fold) {
+                        mobileTable.push("<tr class='regSeason'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
+                        mobileTable.push("<tr class='regSeason'><td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[x + 1]].teams).toUpperCase() + "</td></tr>");
+                    }
                     deskTable.push("<td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[++x]].teams).toUpperCase() + "</td>");
                 } else {
-                    mobileTable.push("<tr class='roundRobin'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
-                    mobileTable.push("<tr class='roundRobin'><td>" + (rrteams[roundRobin[x]]) + "</td><td>vs</td><td>" + (rrteams[roundRobin[x + 1]]) + "</td></tr>");
+                    if (fold) {
+                        mobileTable.push("<tr class='roundRobin'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
+                        mobileTable.push("<tr class='roundRobin'><td>" + (rrteams[roundRobin[x]]) + "</td><td>vs</td><td>" + (rrteams[roundRobin[x + 1]]) + "</td></tr>");
+                    }
                     deskTable.push("<td>" + (rrteams[roundRobin[x]]) + "</td><td>vs</td><td>" + (rrteams[roundRobin[++x]]) + "</td>");
                 }
                 // Code in playoffs based on results of round robin
@@ -198,7 +219,7 @@
     function nextgame() {
         var ng = document.getElementById('mtoday');
         ng.scrollIntoView();
-        window.scrollBy(0,-100);
+        window.scrollBy(0, -100);
     }
 
 </script>

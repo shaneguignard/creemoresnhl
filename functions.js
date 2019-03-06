@@ -42,7 +42,7 @@ try {
     for (var i = 0; i < ly.length; i++) {
         ly[i].innerHTML = lastSeasonYear;
     }
-    
+
     // Season Winners
     var previousYearWinners = "Stayner";
     document.getElementById("seasonWinners").innerHTML = previousYearWinners;
@@ -84,15 +84,14 @@ var logo = document.getElementById('logo');
 var csnhl = document.getElementById('headerName');
 var h = document.getElementById('header');
 window.onscroll = function () {
-    if (window.pageYOffset > 100 && window.innerWidth < 450 ) {
-        MB.style = 'width: 50px; position:fixed; top:0px; right: 5px;font-size: 10pt;';
+    console.log(window.pageYOffset);
+    if (window.pageYOffset > 100 && window.innerWidth < 450) {
+        MB.style = 'width: 50px; position:fixed; top:0px; right: 5px; font-size: 10pt; margin-top:10px;';
         logo.style = 'height: 50px;';
         csnhl.style = 'font-size: 12pt; width:210px;';
-        h.style = 'border-bottom: 1px solid black;';
-    } else if(window.innerWidth < 450) {
-        MB.style = 'width: 100%;';
-        csnhl.style = 'font-size: 18pt;';
+    } else if (window.innerWidth < 450) {
+        MB.style = 'width: 100%; position: fixed; top:auto; left:0px;';
+        csnhl.style = 'font-size: 18pt; width 100%;';
         logo.style = 'height: 75px;';
-        h.style = 'border: none;'
     }
 }
