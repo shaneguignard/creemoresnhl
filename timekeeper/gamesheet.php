@@ -72,6 +72,10 @@
             $result = $conn->query($sql);
     }
  
+        
+    include(allgames.php);  
+    include(teams.php);
+        
     $msg = "<html><body><h1>Summary</h1>$gameDate</body></html>";
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

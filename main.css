@@ -39,7 +39,7 @@ headings: black w/ white font
         display: block;
     }
 
-    #playerStats {
+    #playerStats, #pHeader, #pAwards, #pCurrent, #pHistory {
         display: table;
         margin-left: auto;
         margin-right: auto;
@@ -52,6 +52,7 @@ headings: black w/ white font
         margin-right: auto;
         width: 1200px;
     }
+    
 
 }
 
@@ -61,6 +62,10 @@ headings: black w/ white font
     color: darkgrey;
     padding-top: 10px;
     text-align: center;
+}
+
+#root {
+    padding-top: 50px;
 }
 
 #root,
@@ -93,12 +98,17 @@ headings: black w/ white font
 
 .links {
     display: inline;
-    color: green;
+    color: black;
     padding-top: 10px;
     padding-bottom: 2px;
     padding-right: 10px;
     padding-left: 10px;
 }
+
+.links:hover {
+    border-bottom: 1px solid black;
+}
+
 
 .sticky {
     position: fixed;
@@ -122,14 +132,12 @@ headings: black w/ white font
     color: white;
 }
 
-.links:hover {
-    border-bottom: 1px solid black;
-}
 
 a {
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
+
 
 #featureImg {
     width: 60%;
@@ -160,19 +168,32 @@ a {
 }
 
 
-#playerStats {
-    display: inline-table;
+#playerStats, #pHeader, #pAwards, #pCurrent, #pHistory {
+    display: table;
     width: 100%;
     max-width: 700px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-.pageLinks {
+.pageLinks{
     margin: 25px;
     display: inline-block;
     border: 6px double black;
     padding: 25px;
     border-radius: 200px;
     box-shadow: 0px 10px 10px lightgrey;
+}
+
+.awards{
+    margin: 0px;
+    display: inline-block;
+    height: 100px;
+}
+#awards th{
+    background-color: #225D7A;
+    color: goldenrod;
+    border-bottom: 1px solid black;
 }
 
 historyYear,
@@ -189,7 +210,7 @@ historyTeam {
 .sponsorlinks {
     max-width: 100%;
     height: 70px;
-/*    filter: grayscale(100%);*/
+    /*    filter: grayscale(100%);*/
 }
 
 th {
@@ -198,6 +219,7 @@ th {
     height: 30px;
     font-weight: 500;
 }
+
 
 #deskGamesPast td:nth-child(5n+2),
 #deskSchedule td:nth-child(3n+2) {
@@ -253,6 +275,22 @@ table {
     /*        background: red;*/
 }
 
+.players:hover {
+    border-bottom: 1px solid black;
+}
+
+.pPoints {
+    width: 30px;
+}
+
+#playerImage {
+    width: 250px;
+}
+
+#footer{
+    padding-bottom: 50px;
+}
+
 /*break point for game schedule (past and future)*/
 
 @media screen and (max-width: 900px) {
@@ -260,6 +298,10 @@ table {
         padding: 0px;
         margin: 0px;
 
+    }
+
+    a {
+        color: inherit;
     }
 
     .tablet {
@@ -281,7 +323,7 @@ table {
     }
 
     #root {
-        padding-top: 100px;
+        padding-top: 120px;
     }
 
     #featureImg {
@@ -321,6 +363,7 @@ table {
 
     }
 
+
     li {
         padding: 10px;
         margin: 5px;
@@ -354,13 +397,17 @@ table {
         margin-left: auto;
     }
 
+    #playerImage {
+        padding-top: 50px;
+    }
+    
 
 }
 
 @media screen and (max-width: 700px) {
 
     #root {
-        padding-top: 140px;
+        padding-top: 150px;
     }
 
     #headerName {
@@ -383,9 +430,6 @@ table {
         margin-left: auto;
         margin-right: auto;
         font-size: 18px;
-    }
-
-    #menuButton {
         background: #225D7A;
         color: white;
     }
@@ -408,6 +452,10 @@ table {
     body {
         font-size: .9em;
     }
+    #pHeader, #pAwards, #pCurrent, #pHistory{
+        width: 100%;
+    }
+
 
 }
 
@@ -416,5 +464,9 @@ table {
         font-size: .8em;
     }
 
+    td.players {
+        text-align: left;
+        width: 90px;
+    }
 
 }

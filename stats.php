@@ -2,9 +2,13 @@
 <html>
 
 <?php include_once('head.php') ?>
+<?php include_once('current-mysql.php'); ?>
 
 <body>
-    <?php include_once('header.php'); ?>
+    <?php 
+    include('header.php'); 
+    include('menu.php');
+    ?>
     <noscript>
         For full functionality of this site it is necessary to enable JavaScript.
         Here are the <a href="https://www.enable-javascript.com/" style='text-decoration: underline;'>
@@ -15,6 +19,27 @@
         <div id="stats" class="section">
             <h1>STATISTICS</h1>
             <h4>SUNDAY NIGHT HOCKEY LEAGUE <div class='currentSeasonYear'></div> GAME OVERVIEW</h4>
+
+
+            <td>
+                <?php
+                
+                $sql = "SELECT date FROM history.Players Order by date desc LIMIT 1";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    $i = 0;
+                    while($row = $result->fetch_assoc()) {
+                        $upDate = strtotime($row['date']);
+                        echo "<p class='date'>(Last Updated: ".date('d M y', $upDate).")</p>";
+                    }
+                }
+                else {
+                    echo "There was a problem with the Query: $sql";
+                }
+                    ?>
+            </td>
+
             <table name="gameStats_table" class='desktop' id="deskGamesPast" title='PastGames' cellpadding='0' cellspacing='0'>
                 <tr>
                     <th rowspan="2">Date</th>
@@ -34,8 +59,9 @@
                     <th colspan='2'>Away</th>
                 </tr>
                 <?php
-                include_once('current-mysql.php');
-                $sql = "SELECT * FROM PastGames";
+                
+//                $sql = "SELECT * FROM PastGames";
+                $sql = "SELECT * FROM history.Games WHERE date > '2018-09-01'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
@@ -46,7 +72,7 @@
                             echo "</tr>";
                         }
                         if ($i%3 == 0){
-                            echo "<tr><th class='gamedate'>".date('d F Y', $gamedate)."</th>";
+                            echo "<tr><th class='gamedate'>".date('M-d', $gamedate)."</th>";
                         }
                         echo "<td>{$row['teamA']}</td><td>{$row['goalsA']}</td><td>vs</td><td>{$row['goalsB']}</td><td>{$row['teamB']}</td>";
                         
@@ -58,6 +84,7 @@
                 }
                     ?>
             </table>
+
             <h3>Previous Games</h3>
             <table class='mobile' id='mobileGamesPast' title="PastGames" cellspacing='0' cellpadding='0'>
                 <?php
@@ -73,15 +100,15 @@
                 else {
                     echo "There was a problem connecting to the server";
                 }
-                
                 ?>
             </table>
-            <div id="standings">
+            <div id="standings" class="offset">
                 <h3>STANDINGS</h3>
+                <!--            Stats are only displayed for regular and roundrobin games. Playoffs are ommited -->
                 <table class='standings' cellspacing='0' cellpadding='0'>
                     <tr>
                         <th colspan="10">
-                            <h4>REGULAR STANDINGS</h4>
+                            <h4>REGULAR SEASON TEAM STANDINGS</h4>
                         </th>
                     </tr>
                     <tr>
@@ -109,7 +136,7 @@
                         }
                     }
                     else {
-                        echo "There was a problem retrieving Regular Season Standings";
+                        echo "<tr><td colspan='10'>There was a problem retrieving Regular Season Team Standings</td></tr>";
                     }
                     ?>
                 </table>
@@ -117,7 +144,7 @@
                 <table class='standings' cellspacing='0' cellpadding='0'>
                     <tr>
                         <th colspan="10">
-                            <h4>ROUND ROBIN STANDINGS</h4>
+                            <h4>ROUND ROBIN TEAM STANDINGS</h4>
                         </th>
                     </tr>
                     <tr>
@@ -145,14 +172,14 @@
                         }
                     }
                     else {
-                        echo "There was a problem retrieving RoundRobin Season Standings.";
+                        echo "<tr><td colspan='10'>There was a problem retrieving Round Robin Team Standings</td></tr>";
                     }
                     ?>
                 </table>
 
-                <table id="playerStats" class='standings' cellspacing='0' cellpadding='0'>
+                <table id="playerStats" class='standings offset' cellspacing='0'>
                     <tr>
-                        <th colspan='7'>
+                        <th colspan='8'>
                             <h4>PLAYERS STATISTICS</h4>
                         </th>
                     </tr>
@@ -164,6 +191,7 @@
                         <th>A</th>
                         <th>Pts</th>
                         <th>PIM</th>
+                        <th>Prev. Game</th>
                     </tr>
                     <?php
         $mysql = "SELECT * FROM Players ORDER BY points desc, goals desc, assists desc, penaltyMin asc";
@@ -173,12 +201,12 @@
             $i = 1;
             while($row = $result->fetch_assoc())
             {
-                echo "<tr><td>$i</td><td>{$row['name']}</td><td>{$row['team']}</td><td>{$row['goals']}</td><td>{$row['assists']}</td><td>{$row['points']}</td><td>{$row['penaltyMin']}</td></tr>";
+                echo "<tr><td width='10px'>$i</td><td class='players'><a href='./players.php?name={$row['name']}'>{$row['name']}</a></td><td>{$row['team']}</td><td class='pPoints'>{$row['goals']}</td><td class='pPoints'>{$row['assists']}</td><td class='pPoints'>{$row['points']}</td><td class='pPoints'>{$row['penaltyMin']}</td><td class='pPoints' width='40px'>{$row['newPoints']}</td></tr>";
             $i = $i +1;
             }
         }
         else {
-            echo "There was a problem retrieving Player Stats";
+            echo "<tr><td colspan='8'>There was a problem retrieving Player Stats</td></tr>";
         }
         $conn->close();
         ?>
@@ -191,7 +219,15 @@
             <h1 class="offset">HISTORY</h1>
             <div id="historylinks">
                 <div class="pageLinks">
-                    <a href="history/2018winners.html" target="_page">
+                    <a href="season.php?season=2019" target="_parent">
+                        <img class='historyLinkImg' src="images/logo.png">
+                        <historyYear>2018/2019</historyYear>
+                        <historyTeam>Stayner</historyTeam>
+                    </a>
+                </div>
+                <div class="pageLinks">
+<!--                    <a href="history/2018winners.html" target="_page">-->
+                    <a href="season.php?season=2018" target="_parent">
                         <img class='historyLinkImg' src="images/logo.png">
                         <historyYear>2017/2018</historyYear>
                         <historyTeam>Stayner</historyTeam>

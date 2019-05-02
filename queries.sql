@@ -36,9 +36,12 @@ as temp2;
 /*
 ALTER TABLE AllGames ADD PRIMARY KEY (id);
 Alter TABLE AllGames CHANGE COLUMN id id int(10) AUTO_INCREMENT;
+ALTER TABLE table_name AUTO_INCREMENT = 962;
 */
 
 /* Update AllGames Table */
+DROP TABLE AllGames_bak; 
+CREATE TABLE AllGames_bak AS SELECT * FROM AllGames;
 INSERT INTO AllGames 
 (
     date, 
@@ -81,6 +84,8 @@ WHERE date > '2019-02-18';
 
 /* Update history.Teams */
 
+DROP TABLE Teams_bak;
+CREATE TABLE Teams_bak AS SELECT * FROM Teams;
 SET @row_number = 0;
 DROP TABLE Teams;
 CREATE TABLE Teams as
@@ -182,7 +187,54 @@ as temp2
 ) as temp2
 ORDER BY date;
 
+
+/* Create history.tempPlayers */
+DROP TABLE tempPlayers;
+CREATE TABLE tempPlayers AS
+select distinct 
+date, 
+player, 
+sum(type='goal') as goals, 
+sum(type='assist') as assists, 
+sum(if(type='penalty', 2, 0)) as penaltyMin,
+sum(if(type='goal', 1, 0)+ if(type='assist', 1, 0)) as points
+from Events
+where date > '2019-03-10' /* Since Game Date*/
+group by date, player;
+
+
+/* Update history.Players */
+INSERT INTO Players
+select distinct 
+date,
+player, 
+team,
+goals, 
+assists, 
+penaltyMin,
+points
+from 
+(
+    select distinct 
+    date, 
+    player,
+    team,
+    sum(type='goal') as goals, 
+    sum(type='assist') as assists, 
+    sum(if(type='penalty', 2, 0)) as penaltyMin,
+    sum(if(type='goal', 1, 0)+ if(type='assist', 1, 0)) as points
+    from Events
+    where date > '2019-03-10'
+    group by date, player, team
+) 
+as tempPlayers
+where player <> 'null' AND player <> ""
+group by date, player, team;
+
+
 /* update  current.PastGames table */
+DROP TABLE current.PastGames_bak;
+CREATE TABLE current.PastGames_bak AS SELECT * FROM current.PastGames;
 DROP TABLE current.PastGames;
 CREATE TABLE current.PastGames as
 SELECT 
@@ -200,8 +252,19 @@ SELECT
     GROUP BY floor((id+1)/2);
 
 
-
-
+INSERT INTO current.PastGames
+SELECT 
+    MAX(CASE WHEN id % 2 = 1 THEN date END) AS date, 
+    MAX(CASE WHEN id % 2 = 1 THEN team END) AS teamA, 
+    MAX(CASE WHEN id % 2 = 0 THEN team END) AS teamB, 
+    MAX(CASE WHEN id % 2 = 1 THEN goals END) AS goalsA,
+    MAX(CASE WHEN id % 2 = 0 THEN goals END) AS goalsB,
+    MAX(CASE WHEN id % 2 = 1 THEN shots END) AS shotsA,
+    MAX(CASE WHEN id % 2 = 0 THEN shots END) AS shotsB,
+    MAX(CASE WHEN id % 2 = 1 THEN penaltyMins END) AS penaltyMinsA,
+    MAX(CASE WHEN id % 2 = 0 THEN penaltyMins END) AS penaltyMinsB
+    FROM history.AllGames
+    GROUP BY floor((id+1)/2);
 /* Create current.regularStandings */ 
 /* These should eventually just be an extention of the teams and players tables in history database using datelast modified as a key */
 Drop table current.regularStandings;
@@ -230,6 +293,8 @@ where date > '2018-10-01'
 group by team;
 
 /* Create current.roundrobinStandings */
+drop table current.roundrobinStandings_bak;
+CREATE TABLE current.roundrobinStandings_bak AS SELECT * FROM current.roundrobinStandings;
 Drop table current.roundrobinStandings;
 create table current.roundrobinStandings as 
 Select 
@@ -252,7 +317,7 @@ sum(goalsAgainst) as ga,
 
 sum(diff) as diff
 from history.Teams 
-where date > '2019-02-05' 
+where date > '2019-02-05' /* beginning of round robin */
 group by team;
 
 /* Create league.Teams */
@@ -276,73 +341,45 @@ sum(diff) as diff from history.Games
 group by team;
 
 
-/* Create history.tempPlayers */
-DROP TABLE tempPlayers;
-CREATE TABLE tempPlayers AS
-select distinct 
-date, 
-player, 
-sum(type='goal') as goals, 
-sum(type='assist') as assists, 
-sum(if(type='penalty', 2, 0)) as penaltyMin,
-sum(if(type='goal', 1, 0)+ if(type='assist', 1, 0)) as points
-from Events
-where date > '2019-02-24'
-group by date, player;
-
-
-/* Update history.Players */
-INSERT INTO Players
-select distinct 
-date,
-player, 
-team,
-goals, 
-assists, 
-penaltyMin,
-points
-from 
-(
-    select distinct 
-    date, 
-    player,
-    team,
-    sum(type='goal') as goals, 
-    sum(type='assist') as assists, 
-    sum(if(type='penalty', 2, 0)) as penaltyMin,
-    sum(if(type='goal', 1, 0)+ if(type='assist', 1, 0)) as points
-    from Events
-    where date > '2019-02-24'
-    group by date, player, team
-) 
-as tempPlayers
-where player <> 'null' AND player <> ""
-group by date, player, team;
-
 /* Merge existing player stats with new player stats and export as new table current.Players */
-DROP TABLE Players_bak;
+DROP TABLE Players_bak, nPlayers;
 CREATE TABLE Players_bak as SELECT * FROM Players;
-DROP TABLE Players;
 CREATE TABLE nPlayers as SELECT * from Players;
-
+DROP TABLE Players;
 CREATE TABLE Players AS
-SELECT nPlayers.name, nPlayers.team, 
+
+SELECT history.tempPlayers.date as 'lastUpdate', nPlayers.name, nPlayers.team, 
 COALESCE(nPlayers.goals + history.tempPlayers.goals, nPlayers.goals) as goals, 
 COALESCE(nPlayers.assists + history.tempPlayers.assists, nPlayers.assists) as assists,
 COALESCE(nPlayers.penaltyMin + history.tempPlayers.penaltyMin, nPlayers.penaltyMin) as penaltyMin,
-COALESCE(nPlayers.points + history.tempPlayers.points, nPlayers.points) as points
+COALESCE(nPlayers.points + history.tempPlayers.points, nPlayers.points) as points,
+IF(history.tempPlayers.points >0, history.tempPlayers.points, 0) as 'newPoints'
+/*(select nPlayers.points / (select sum(r.gp + rr.gp) as gp from current.regularStandings as r, current.roundrobinStandings as rr LIMIT 1))*/
+/*(select history.Players.points from history.Players where history.Players.date > '2019-02-02%') as pp/ (select rr.gp from roundrobinStandings as rr limit 1)) as 'rrAvg'*/
 FROM nPlayers
 LEFT OUTER JOIN history.tempPlayers ON history.tempPlayers.player = nPlayers.name
-UNION
-SELECT nPlayers.name, nPlayers.team, 
-COALESCE(nPlayers.goals + history.tempPlayers.goals, nPlayers.goals) as goals, 
-COALESCE(nPlayers.assists + history.tempPlayers.assists, nPlayers.assists) as assists,
-COALESCE(nPlayers.penaltyMin + history.tempPlayers.penaltyMin, nPlayers.penaltyMin) as penaltyMin,
-COALESCE(nPlayers.points + history.tempPlayers.points, nPlayers.points) as points
-FROM nPlayers
-RIGHT OUTER JOIN history.tempPlayers ON history.tempPlayers.player = nPlayers.name;
-DROP TABLE nPlayers;
+ORDER BY points desc;
 
+
+/* WIP: update current.Players vs creating new table*/
+update
+nPlayers
+SET
+goals = sum(nPlayers.goals + history.tempPlayers.goals),
+assists = sum(nPlayers.assists + history.tempPlayers.assists),
+penaltyMin = sum(nPlayers.penaltyMin + history.tempPlayers.penaltyMin),
+points = sum(nPlayers.points + history.tempPlayers.points)
+FROM nPlayers 
+INNER JOIN history.tempPlayers
+ON history.tempPlayers.players = nPlayers.name;
+
+select nPlayers.name, 
+sum(nPlayers.goals) as oldGoals, 
+sum(history.tempPlayers.goals) as tempGoals, 
+sum(nPlayers.goals + history.tempPlayers.goals) as newGoals 
+from nPlayers, history.tempPlayers 
+where nPlayers.name = history.tempPlayers.player 
+GROUP BY nPlayers.name;
 
 /* create a procedure to execute later */
 CREATE PROCEDURE myProcedure

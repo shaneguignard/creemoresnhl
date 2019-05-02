@@ -5,14 +5,19 @@
 // Define Date of page instance
 var t = new Date();
 // Declare when season ends and switches over to new year (0-11 months)
-var newSeason = 6;
+var newSeason = 2;
 
 // Create variables for the current year and previous year to dynamically update with the changing seasons based on the date of the page instance
-var currentSeasonYear, lastSeasonYear
+var currentSeasonYear, lastSeasonYear;
 if (t.getMonth() > newSeason) {
+//if (false) {
+    console.log("Current month("+t.getMonth()+") is greater than Seasons " + newSeason);
     currentSeasonYear = t.getFullYear() + "/" + (t.getFullYear() + 1);
     lastSeasonYear = (t.getFullYear() - 1) + "/" + (t.getFullYear());
-} else if (t.getMonth() < newSeason) {
+} 
+else if (t.getMonth() < newSeason) {
+//else if (true) {
+    console.log("Current month("+t.getMonth()+") is less than new season "+newSeason);
     currentSeasonYear = (t.getFullYear() - 1) + "/" + t.getFullYear();
     lastSeasonYear = (t.getFullYear() - 2) + "/" + (t.getFullYear() - 1);
 }
@@ -48,9 +53,10 @@ try {
     document.getElementById("seasonWinners").innerHTML = previousYearWinners;
 
     //Supporting Picture
-
-    var champsPicture = "images/2018_winners.jpeg";
-    document.getElementById("featureImg").src = champsPicture;
+    
+    var seasonChampsYear = '2019';
+//    var champsPicture = "images/"+seasonChampsYear+"_winners.jpeg";
+//    document.getElementById("featureImg").src = champsPicture;
 } catch (err) {
     console.log("No class for current season year found: ", err);
 }

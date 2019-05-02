@@ -1,3 +1,0 @@
-date, home, score, away, score, home, score, away, score, home, score, away, score,
-41931, Belarus,3,NewLowell,3,Garner,2, CoatesCreek,8,Stayner ,4, Cashtown,4,
-41938, Coates Creek ,8, Cashtown,4,Belarus ,5, Garner,6,New Lowell ,6, Stayner,2

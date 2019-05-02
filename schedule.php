@@ -4,7 +4,10 @@
 <?php include_once('head.php') ?>
 
 <body onload="schedule(g)">
-    <?php include_once('header.php'); ?>
+    <?php 
+    include('header.php'); 
+    include('menu.php');
+    ?>
     <noscript>
         For full functionality of this site it is necessary to enable JavaScript.
         Here are the <a href="https://www.enable-javascript.com/" style='text-decoration: underline;'>
@@ -16,7 +19,7 @@
             <h1>SCHEDULE</h1>
             <h5 class='currentSeasonYear'></h5>
             <h5>GAME SCHEDULE</h5>
-            
+
             <!--            <a class="button" target="_blank" href="printschedule.html">Print Schedule</a>-->
             <table name="schedule_table" class='desktop' id="deskSchedule" title='futureGames' cellpadding='0' cellspacing='0'>
                 <tr>
@@ -118,8 +121,9 @@
         var curr = false;
         var regularSeason = [0, 1, 2, 3, 4, 5, 3, 5, 0, 2, 1, 4, 1, 5, 2, 4, 0, 3, 0, 4, 1, 3, 2, 5, 3, 4, 0, 5, 1, 2, 2, 3, 4, 5, 0, 1, 0, 2, 1, 4, 3, 5, 2, 4, 0, 3, 1, 5, 1, 3, 2, 5, 0, 4, 0, 5, 1, 2, 3, 4, 4, 5, 0, 1, 2, 3, 1, 4, 3, 5, 0, 2, 0, 3, 1, 5, 2, 4, 2, 5, 0, 4, 1, 3, 1, 2, 3, 4, 0, 5];
         var roundRobin = [0, 5, 1, 4, 2, 3, 0, 4, 1, 3, 2, 5, 0, 3, 1, 2, 4, 5, 0, 2, 1, 5, 3, 4, 0, 1, 2, 4, 3, 5];
+        //update via php table? 
         var rrteams = ['STAYNER', 'NEW LOWELL', 'COATES CREEK', 'CASHTOWN', 'HERBTOWN', 'BELARUS']
-        var playoffs = [];
+        var playoffs = ['STAYNER', 'HERBTOWN', 'COATES CREEK', 'NEW LOWELL'];
 
         var mobileSchedule = document.getElementById('mobileSchedule');
         var mobileTable = [];
@@ -163,6 +167,7 @@
                     deskTable.push("<tr><th  colspan='10'>Playoffs</th></tr>");
                     if (fold) {
                         mobileTable.push("<tr><th colspan='3'><h3>Playoffs</h3></th></tr>");
+
                     }
                     break;
             }
@@ -179,7 +184,7 @@
                 mobileTable.push("<tr><th colspan='3'>" + g[day].toDateString() + "</th></tr>");
             }
             deskTable.push("<tr class='regSeason'><th rowspan='1'>" + g[day].toDateString() + "</th>");
-
+            j = 0;
             for (var hour = 0; hour < s.length; hour++) {
                 if (x + 2 > regularSeason.length) {
                     x = 0;
@@ -191,17 +196,44 @@
                         mobileTable.push("<tr class='regSeason'><td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[x + 1]].teams).toUpperCase() + "</td></tr>");
                     }
                     deskTable.push("<td>" + (teamStats[regularSeason[x]].teams).toUpperCase() + "</td><td>vs</td><td>" + (teamStats[regularSeason[++x]].teams).toUpperCase() + "</td>");
-                } else {
+                } else if (day > 14 && day < 20) {
                     if (fold) {
                         mobileTable.push("<tr class='roundRobin'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
                         mobileTable.push("<tr class='roundRobin'><td>" + (rrteams[roundRobin[x]]) + "</td><td>vs</td><td>" + (rrteams[roundRobin[x + 1]]) + "</td></tr>");
                     }
                     deskTable.push("<td>" + (rrteams[roundRobin[x]]) + "</td><td>vs</td><td>" + (rrteams[roundRobin[++x]]) + "</td>");
+                } else {
+                    if (fold) {
+                        // SEMI-FINALS
+                        if (hour < 2 && day != 21) {
+
+                            mobileTable.push("<tr class='playoff'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
+                            mobileTable.push("<tr class='playoff'><td>" + playoffs[j] + "</td><td>vs</td><td>" + playoffs[j+1] + "</td></tr>");
+                            
+                        }
+
+                        // CHAMPIONSHIP GAME Mobile
+                        else if (hour < 1) {
+                            mobileTable.push("<tr class='semifinals'><th colspan='3'><h3>Finals</h3></th></tr>");
+                            mobileTable.push("<tr class='playoff'><th colspan='3'>" + s[hour].toLocaleTimeString() + "</th></tr>");
+                            mobileTable.push("<tr class='playoff'><td><h4>COATES CREEK</h4></td><td>vs</td><td><h4>STAYNER</h4></td></tr>");
+                        }
+
+                    }
+                    // SEMI-FINALS
+                    if (hour < 2 && day != 21) {
+                        deskTable.push("<td>" + playoffs[j] + "</td><td>vs</td><td>" + playoffs[++j] + "</td>");
+                    }
+                    
+                    // CHAMPIONSHIP Desktop
+                    else if (hour < 1){
+                        deskTable.push("<td>COATES CREEK</td><td>vs</td><td>STAYNER</td>")
+                    }
                 }
+
                 // Code in playoffs based on results of round robin
                 ++x;
-
-
+                ++j;
             }
             deskTable.push("</tr>");
 
@@ -212,8 +244,11 @@
         deskSchedule.innerHTML = desktemp;
         return;
     }
-    makeSchedule(a, i, g);
-    schedule(g);
+    
+//    Create a calendar form that will create a list of all the games for that season. 
+    
+//    makeSchedule(a, i, g);
+//    schedule(g);
 
 
     function nextgame() {
