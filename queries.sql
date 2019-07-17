@@ -39,6 +39,17 @@ Alter TABLE AllGames CHANGE COLUMN id id int(10) AUTO_INCREMENT;
 ALTER TABLE table_name AUTO_INCREMENT = 962;
 */
 
+
+/* 
+
+$host = "35.183.44.111";
+$user = "csnhl";
+$password = "C&snh12019";
+$db = "current";
+
+
+*/
+
 /* Update AllGames Table */
 DROP TABLE AllGames_bak; 
 CREATE TABLE AllGames_bak AS SELECT * FROM AllGames;

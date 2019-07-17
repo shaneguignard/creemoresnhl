@@ -7,4 +7,5 @@ $db = "current";
 
 // Create connection
 $conn = new mysqli($host, $user, $password, $db) or die('Error connecting to server: <br>'. mysqli_connect_error());
+
 ?>
