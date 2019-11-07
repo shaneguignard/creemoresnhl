@@ -276,6 +276,7 @@ SELECT
     MAX(CASE WHEN id % 2 = 0 THEN penaltyMins END) AS penaltyMinsB
     FROM history.AllGames
     GROUP BY floor((id+1)/2);
+    
 /* Create current.regularStandings */ 
 /* These should eventually just be an extention of the teams and players tables in history database using datelast modified as a key */
 Drop table current.regularStandings;

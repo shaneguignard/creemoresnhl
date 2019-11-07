@@ -20,6 +20,7 @@
         <div class="links"><a href='about.php'>ABOUT</a></div>
         <div class="links"><a href='about.php#contacts'>CONTACTS</a></div>
         <div class="links"><a id='registration' href='2012-2013 Regristration.pdf' target='_page'>REGISTRATION</a></div>
+        <!-- <div class="links"><a href='./beta/timekeeper/index.php'>TIMEKEEPER</a></div> -->
     </nav>
     <nav id='nav' class="mobile">
         <ul>
@@ -55,7 +56,7 @@
                     <li>Players</li>
                 </a>
             </ul>
--->
+-->         
             <a href='about.php'>
                 <li>About</li>
             </a>
@@ -64,6 +65,9 @@
                     <li>Contacts</li>
                 </a>
             </ul>
+             <!-- <a href='./timekeeper/index.php'>
+                <li>TimeKeeper</li>
+            </a> -->
         </ul>
 
     </nav>

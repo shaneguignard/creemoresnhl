@@ -1,11 +1,11 @@
 // Script for the display of dynamic information
 // Identify what year the information belongs to
-// Make these integers that are manually populated by using todays current date
+// Make these integers that are automatically populated by using todays current date
 
 // Define Date of page instance
 var t = new Date();
 // Declare when season ends and switches over to new year (0-11 months)
-var newSeason = 2;
+var newSeason = 8;
 
 // Create variables for the current year and previous year to dynamically update with the changing seasons based on the date of the page instance
 var currentSeasonYear, lastSeasonYear;

@@ -1,0 +1,27 @@
+INSERT INTO Players
+select 
+distinct date,
+player, 
+team,
+goals, 
+assists, 
+penaltyMin,
+points
+from 
+(
+    select distinct 
+    date, 
+    player,
+    team,
+    sum(type='goal') as goals, 
+    sum(type='assist') as assists, 
+    sum(type='penalty')*2 as penaltyMin,
+    sum(type='goal') + sum(type='assist')) as points,
+    period
+    from Events
+    where date > '2019-10-27'
+    group by date, player, team
+) 
+as tempPlayers
+where player <> 'null' AND player <> ""
+group by date, player, team;

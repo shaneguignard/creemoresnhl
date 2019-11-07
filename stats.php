@@ -40,6 +40,7 @@
                     ?>
             </td>
 
+            <h3>Previous Games</h3>
             <table name="gameStats_table" class='desktop' id="deskGamesPast" title='PastGames' cellpadding='0' cellspacing='0'>
                 <tr>
                     <th rowspan="2">Date</th>
@@ -61,7 +62,7 @@
                 <?php
                 
 //                $sql = "SELECT * FROM PastGames";
-                $sql = "SELECT * FROM history.Games WHERE date > '2018-09-01'";
+                $sql = "SELECT * FROM history.Games WHERE date > '2019-09-01'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
@@ -85,10 +86,10 @@
                     ?>
             </table>
 
-            <h3>Previous Games</h3>
             <table class='mobile' id='mobileGamesPast' title="PastGames" cellspacing='0' cellpadding='0'>
                 <?php
-                $sql = "SELECT * FROM PastGames ORDER BY date desc";
+                // $sql = "SELECT * FROM PastGames ORDER BY date desc";
+                $sql = "SELECT * FROM history.Games WHERE date > '2019-09-01'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
@@ -124,23 +125,44 @@
                         <th>+/-</th>
                     </tr>
                     <?php
-                    $mysql = "SELECT * FROM regularStandings ORDER BY pts desc, w desc, diff desc";
-                    $result = $conn->query($mysql);
-                    if($result -> num_rows > 0)
+                    $regularSeason = "Select distinct team, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff, sum(team='belarus') as gpbel, sum(team='cashtown') as gpcash, sum(team='new lowell Hawks') as gpnl, sum(team='herbtown') as gpherb, sum(team='coates creek') as gpcc, sum(team='stayner') as gpstay, (sum(win)*2+sum(tie)) as pts from history.Teams where date > '2019-10-10' group by team order by diff desc";
+                    $alltime = "Select distinct team, sum(team) as gp, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff from history.Teams group by team order by diff desc;"; 
+                    $regularSeasonTeamStats = $conn->query($regularSeason);
+                    $alltimeTeamStats = $conn->query($alltime);
+                    if($regularSeasonTeamStats -> num_rows > 0)
                     {
                         $i = 1;
-                        while($row = $result->fetch_assoc())
+                        while($row = $regularSeasonTeamStats->fetch_assoc())
                         {
-                            echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$row['gp']}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
+                            switch($row['team']){
+                                case 'Belarus': $gp = $row['gpbel'];
+                                break;
+                            }
+                            echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$gp}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
                             $i = $i + 1;
                         }
+                    }
+                    else if($alltimeTeamStats -> num_rows > 0)
+                    {
+                        echo "<tr><td colspan='10'>No stats to display</td></tr>";
+                        // $i = 1;
+                        // echo "<tr><td colspan='10'>History of league Overview</td></tr>";
+                        // while($row = $alltimeTeamStats->fetch_assoc())
+                        // {
+                        //     switch($row['team']){
+                        //         case 'Belarus': $gp = $row['gp-bel'];
+                        //         break;
+                        //     }
+                        //     echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$gp}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
+                        //     $i = $i + 1;
+                        // }
                     }
                     else {
                         echo "<tr><td colspan='10'>There was a problem retrieving Regular Season Team Standings</td></tr>";
                     }
                     ?>
                 </table>
-
+<!--  Commented out for regular season
                 <table class='standings' cellspacing='0' cellpadding='0'>
                     <tr>
                         <th colspan="10">
@@ -158,21 +180,43 @@
                         <th>GF</th>
                         <th>GA</th>
                         <th>+/-</th>
-                    </tr>
+                    </tr> 
+-->
                     <?php
-                    $mysql = "SELECT * FROM roundrobinStandings ORDER BY pts desc, w desc, diff desc";
-                    $result = $conn->query($mysql);
-                    if($result -> num_rows > 0)
+                    $rrSeason = "Select distinct team, sum(team) as gp, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff from history.Teams where date > '2020-02-05' group by team order by diff desc;"; 
+                    $alltime = "Select distinct team, sum(team) as gp, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff from history.Teams group by team order by diff desc;"; 
+                    $rrSeasonTeamStats = $conn->query($rrSeason);
+                    $alltimeTeamStats = $conn->query($alltime);
+                    if($regularSeasonTeamStats -> num_rows > 0)
                     {
                         $i = 1;
-                        while($row = $result->fetch_assoc())
+                        while($row = $rrSeasonTeamStats->fetch_assoc())
                         {
+                            switch($row['team']){
+                                case 'Belarus': $row['gp'] = $row['gp-bel'];
+                                break;
+                            }
                             echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$row['gp']}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
                             $i = $i + 1;
                         }
                     }
+                    else if($alltimeTeamStats -> num_rows > 0)
+                    {
+                        echo "<tr><td colspan='10'>No stats to display</td></tr>";
+                        // $i = 1;
+                        // echo "<tr><td colspan='10'>History of league Overview</td></tr>";
+                        // while($row = $alltimeTeamStats->fetch_assoc())
+                        // {
+                        //     switch($row['team']){
+                        //         case 'Belarus': $gp = $row['gp-bel'];
+                        //         break;
+                        //     }
+                        //     echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$gp}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
+                        //     $i = $i + 1;
+                        // }
+                    }
                     else {
-                        echo "<tr><td colspan='10'>There was a problem retrieving Round Robin Team Standings</td></tr>";
+                        echo "<tr><td colspan='10'>There was a problem retrieving Regular Season Team Standings</td></tr>";
                     }
                     ?>
                 </table>
@@ -194,22 +238,25 @@
                         <th>Prev. Game</th>
                     </tr>
                     <?php
-        $mysql = "SELECT * FROM Players ORDER BY points desc, goals desc, assists desc, penaltyMin asc";
-                    $result = $conn->query($mysql);
-        if($result -> num_rows > 0)
-        {
-            $i = 1;
-            while($row = $result->fetch_assoc())
-            {
-                echo "<tr><td width='10px'>$i</td><td class='players'><a href='./players.php?name={$row['name']}'>{$row['name']}</a></td><td>{$row['team']}</td><td class='pPoints'>{$row['goals']}</td><td class='pPoints'>{$row['assists']}</td><td class='pPoints'>{$row['points']}</td><td class='pPoints'>{$row['penaltyMin']}</td><td class='pPoints' width='40px'>{$row['newPoints']}</td></tr>";
-            $i = $i +1;
-            }
-        }
-        else {
-            echo "<tr><td colspan='8'>There was a problem retrieving Player Stats</td></tr>";
-        }
-        $conn->close();
-        ?>
+                        $currentSeasonPlayers = "Select distinct name, team, sum(goals) as goals, sum(assists) as assists, sum(points) as points, sum(penaltyMin) as penaltyMin  from history.Players where date > '2019-9-1' group by name, team order by points desc, goals desc, assists desc;"; 
+                        // $alltime_players = "SELECT * FROM Players ORDER BY points desc, goals desc, assists desc, penaltyMin asc";
+                        $playersStats = $conn->query($currentSeasonPlayers);
+                        if($playersStats -> num_rows > 0)
+                        {
+                            $i = 1;
+                            while($row = $playersStats->fetch_assoc())
+                            {
+                                echo "<tr><td width='10px'>$i</td><td class='players'><a href='./players.php?name={$row['name']}'>{$row['name']}</a></td><td>{$row['team']}</td><td class='pPoints'>{$row['goals']}</td><td class='pPoints'>{$row['assists']}</td><td class='pPoints'>{$row['points']}</td><td class='pPoints'>{$row['penaltyMin']}</td><td class='pPoints' width='40px'>{$row['newPoints']}</td></tr>";
+                            $i = $i +1;
+                            }
+                        }
+                        
+                        else {
+                            echo "<tr><td colspan='8'>No stats to display</td></tr>";
+                            // echo "<tr><td colspan='8'>There was a problem retrieving Player Stats</td></tr>";
+                        }
+                        $conn->close();
+                    ?>
                 </table>
             </div>
         </div>

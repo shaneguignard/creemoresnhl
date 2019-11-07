@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Import Style sheet-->
     <link rel="stylesheet" type="text/css" href="main.css">
-    <!--Import Jquery for JS functions-->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47081695-1"></script>
     <script>

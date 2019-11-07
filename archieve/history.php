@@ -24,7 +24,6 @@
     nextGame();
     makeSchedule(a, i, g);
     schedule(g);
-
 </script>
 
 </html>

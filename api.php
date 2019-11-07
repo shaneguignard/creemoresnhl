@@ -24,6 +24,7 @@ function getVezina($conn, $year){
 
 //function getVezinaPoints($year){ return "2.25 GAA"; }
 
+// Players Choice Awards
 function getPCA($conn, $year) { 
     $result = $conn->query("SELECT * FROM history.Awards WHERE year(year) = {$year} and name = 'Players Choice Award'");
     if ($result -> num_rows > 0){
@@ -34,7 +35,7 @@ function getPCA($conn, $year) {
         echo "error";
     }
 }
-
+// Points Leader Award
 function getPLA($conn, $year) {
    $result = $conn->query("SELECT * FROM history.Awards WHERE year(year) = {$year} and name = 'Points Leader Award'");
     if ($result -> num_rows > 0){
@@ -55,12 +56,12 @@ function getPLA($conn, $year) {
 // PLAYER INFO
 
 function getNumber($conn, $player){
-    $result = $conn->query("SELECT number FROM league.Players Where name='$player'");
+    $result = $conn->query("SELECT number FROM league.Players_BASE Where name='$player'");
     if ($result->num_rows > 0) {
         return $result->fetch_array()[0];
     }
     else {
-        return "There was a problem with getNumber";
+        return " No Number ";
     }
 }
 function joined($conn, $player){
@@ -90,13 +91,13 @@ function career($conn, $player){
 }
 
 // Return only the player information for that year, by default return all information when $season is null
+
 function getCurrent($conn, $player, $season){
     $season = date('Y');
-    $result = $conn->query("Select *, (select team from history.AllGames as AG where date = PE.date and team <> PE.team limit 1) as opponent from history.Players as PE where name = '$player'  and date > '".($season-1)."-09-01' and date < '".$season."-04-01'");
-    
+    $result = $conn->query("Select *, (select team from history.Events as AG where date = PE.date and team <> PE.team limit 1) as opponent from history.Players as PE where name = '$player'  and date > '".($season)."-09-01' and date < '".($season+1)."-04-01'");
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()){
-            echo "<tr><td>".date("M-d H",strtotime($row['date']))."</td><td>".$row['period']."</td><td>".$row['goals']."</td><td>".$row['assists']."</td><td>".$row['points']."</td><td>".$row['penaltyMin']."</td><td>".$row['opponent']."</td></tr>";
+            echo "<tr><td>".date("M-d (H)",strtotime($row['date']))."</td><td>".$row['period']."</td><td>".$row['goals']."</td><td>".$row['assists']."</td><td>".$row['points']."</td><td>".$row['penaltyMin']."</td><td>".$row['opponent']."</td></tr>";
         }
     }
     else {

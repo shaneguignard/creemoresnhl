@@ -3,7 +3,7 @@
 <?php include('head.php'); ?>
 <body>
    <?php 
-    include('header.php');
+    include_once('header.php');
     ?>
     <noscript>
         For full functionality of this site it is necessary to enable JavaScript.
