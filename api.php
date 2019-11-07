@@ -3,7 +3,10 @@
 // APIs
 
 // HIGHLIGHT AND AWARDS INFO
-function getChamps($year){ return "Stayner"; }
+function getChamps($year){ 
+    // select team from Teams order by points limit 1; 
+    return "Stayner"; 
+}
 
 function featureImg($year){ 
     return "images/".$year."_winners.jpeg";
@@ -21,8 +24,6 @@ function getVezina($conn, $year){
         echo "error";
     }
 }
-
-//function getVezinaPoints($year){ return "2.25 GAA"; }
 
 // Players Choice Awards
 function getPCA($conn, $year) { 
@@ -47,11 +48,6 @@ function getPLA($conn, $year) {
         echo "error";
     }
 }
-
-
-
-//function getPointsLeaderPoints($year) { return "15G 22A 37pts"; }
-
 
 // PLAYER INFO
 
