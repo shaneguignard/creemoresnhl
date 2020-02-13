@@ -223,8 +223,8 @@ player,
 team,
 goals, 
 assists, 
-penaltyMin,
-points
+points,
+penaltyMin
 from 
 (
     select distinct 

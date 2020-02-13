@@ -1,0 +1,4 @@
+/beta/.config
+/beta/timekeeper/history-mysql.php
+queries.sql
+current-mysql.php

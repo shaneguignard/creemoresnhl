@@ -62,7 +62,7 @@
                 <?php
                 
 //                $sql = "SELECT * FROM PastGames";
-                $sql = "SELECT * FROM history.Games WHERE date > '2019-09-01'";
+                $sql = "SELECT * FROM history.Games WHERE date > '2019-10-01'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
@@ -119,14 +119,16 @@
                         <th>W</th>
                         <th>L</th>
                         <th>T</th>
-                        <th>Pts</th>
+                        <th>PTS</th>
                         <th>GF</th>
                         <th>GA</th>
                         <th>+/-</th>
                     </tr>
                     <?php
-                    $regularSeason = "Select distinct team, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff, sum(team='belarus') as gpbel, sum(team='cashtown') as gpcash, sum(team='new lowell Hawks') as gpnl, sum(team='herbtown') as gpherb, sum(team='coates creek') as gpcc, sum(team='stayner') as gpstay, (sum(win)*2+sum(tie)) as pts from history.Teams where date > '2019-10-10' group by team order by diff desc";
-                    $alltime = "Select distinct team, sum(team) as gp, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff from history.Teams group by team order by diff desc;"; 
+                    // Currently Belarus is the ultimate source of truth for the number of games played [sum(team='belarus') as gp].
+                    // This should be determined per team. 
+                    $regularSeason = "Select distinct team, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff, sum(team='belarus') as gpbel, sum(team='cashtown') as gpcash, sum(team='New lowell Hawks') as gpnl, sum(team='herbtown') as gpherb, sum(team='coates creek') as gpcc, sum(team='stayner') as gpstay, (sum(win)*2+sum(tie)) as pts from history.Teams where date > '2019-10-10' group by team order by pts desc, diff desc";
+                    $alltime = "Select distinct team, sum(team) as gp, sum(goalsFor) as gf, sum(goalsAgainst) as ga, sum(win) as w, sum(loss) as l, sum(tie) as t, sum(diff) as diff from history.Teams group by team order by pts desc;"; 
                     $regularSeasonTeamStats = $conn->query($regularSeason);
                     $alltimeTeamStats = $conn->query($alltime);
                     if($regularSeasonTeamStats -> num_rows > 0)
@@ -137,8 +139,18 @@
                             switch($row['team']){
                                 case 'Belarus': $gp = $row['gpbel'];
                                 break;
+                                case 'Cashtown': $gp = $row['gpcash'];
+                                break; 
+                                case 'New Lowell Hawks': $gp = $row['gpnl'];
+                                break;
+                                case 'Coates Creek': $gp = $row['gpcc'];
+                                break;
+                                case 'Herbtown': $gp = $row['gpherb'];
+                                break;
+                                case 'Stayner': $gp = $row['gpstay'];
+                                break;
                             }
-                            echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$gp}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
+                            echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$gp}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td style='text-align:center;'>{$row['diff']}</td></tr>";
                             $i = $i + 1;
                         }
                     }
@@ -176,7 +188,7 @@
                         <th>W</th>
                         <th>L</th>
                         <th>T</th>
-                        <th>Pts</th>
+                        <th>PTS</th>
                         <th>GF</th>
                         <th>GA</th>
                         <th>+/-</th>
@@ -193,10 +205,20 @@
                         while($row = $rrSeasonTeamStats->fetch_assoc())
                         {
                             switch($row['team']){
-                                case 'Belarus': $row['gp'] = $row['gp-bel'];
+                                case 'Belarus': $gp = $row['gpbel'];
+                                break;
+                                case 'Cashtown': $gp = $row['gpcash'];
+                                break; 
+                                case 'New Lowell': $gp = $row['gpnl'];
+                                break;
+                                case 'Coates Creek': $gp = $row['gpcc'];
+                                break;
+                                case 'Herbtown': $gp = $row['gpherb'];
+                                break;
+                                case 'Stayner': $gp = $row['gpstay'];
                                 break;
                             }
-                            echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$row['gp']}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
+                            echo "<tr><td>$i</td><td class='rrteams'>{$row['team']}</td><td>{$gp}</td><td>{$row['w']}</td><td>{$row['l']}</td><td>{$row['t']}</td><td>{$row['pts']}</td><td>{$row['gf']}</td><td>{$row['ga']}</td><td>{$row['diff']}</td></tr>";
                             $i = $i + 1;
                         }
                     }
@@ -233,12 +255,11 @@
                         <th>Team</th>
                         <th>G</th>
                         <th>A</th>
-                        <th>Pts</th>
+                        <th>PTS</th>
                         <th>PIM</th>
-                        <th>Prev. Game</th>
                     </tr>
                     <?php
-                        $currentSeasonPlayers = "Select distinct name, team, sum(goals) as goals, sum(assists) as assists, sum(points) as points, sum(penaltyMin) as penaltyMin  from history.Players where date > '2019-9-1' group by name, team order by points desc, goals desc, assists desc;"; 
+                        $currentSeasonPlayers = "Select distinct name, team, sum(goals) as goals, sum(assists) as assists, sum(points) as points, sum(penaltyMin) as penaltyMin from history.Players where date > '2019-9-1' group by name, team order by points desc, goals desc, assists desc;"; 
                         // $alltime_players = "SELECT * FROM Players ORDER BY points desc, goals desc, assists desc, penaltyMin asc";
                         $playersStats = $conn->query($currentSeasonPlayers);
                         if($playersStats -> num_rows > 0)
@@ -246,7 +267,7 @@
                             $i = 1;
                             while($row = $playersStats->fetch_assoc())
                             {
-                                echo "<tr><td width='10px'>$i</td><td class='players'><a href='./players.php?name={$row['name']}'>{$row['name']}</a></td><td>{$row['team']}</td><td class='pPoints'>{$row['goals']}</td><td class='pPoints'>{$row['assists']}</td><td class='pPoints'>{$row['points']}</td><td class='pPoints'>{$row['penaltyMin']}</td><td class='pPoints' width='40px'>{$row['newPoints']}</td></tr>";
+                                echo "<tr><td width='10px'>$i</td><td class='players'><a href='./players.php?name={$row['name']}'>{$row['name']}</a></td><td>{$row['team']}</td><td class='pPoints'>{$row['goals']}</td><td class='pPoints'>{$row['assists']}</td><td class='pPoints'>{$row['points']}</td><td class='pPoints'>{$row['penaltyMin']}</td></tr>";
                             $i = $i +1;
                             }
                         }
@@ -282,6 +303,7 @@
                 </div>
                 <div class="pageLinks">
                     <a href="history/2017winners.html" target="_page">
+                    <!-- <a href="season.php?season=2017" target="_parent"> -->
                         <img class='historyLinkImg' src="images/logo.png">
                         <historyYear>2016/2017</historyYear>
                         <historyTeam>Stayner</historyTeam>
