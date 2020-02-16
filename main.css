@@ -1,0 +1,472 @@
+/*It is easier to work from the desktop down to the mobile as mobile css will inherit the desktop styles, but the desktop styles wont inherit the mobile styles*/
+
+/*Colour Theme Background:
+
+light mode:
+background: White with black font
+foreground: transparent
+headings: CSNHLBlue (#225D7A) w/ white font
+
+
+/*
+dark mode
+background: #3d72a4 w/ black font
+foreground: #759fc8
+headings: black w/ white font
+*/
+
+
+@keyframes menu {
+    from {
+        display: none;
+    }
+
+    to {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 1500px) {
+    body {
+        font-size: 1.2em;
+    }
+
+    .desktop {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    #playerStats, #pHeader, #pAwards, #pCurrent, #pHistory {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1000px;
+    }
+
+    #about {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1200px;
+    }
+    
+
+}
+
+#master {
+    float: bottom;
+    width: auto;
+    color: darkgrey;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#root {
+    padding-top: 50px;
+}
+
+#root,
+#awards {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header {
+    background: white;
+}
+
+.desktop {
+    display: table;
+    width: 100%;
+}
+
+.mobile,
+.tablet,
+#menuButton {
+    display: none;
+    width: 100%;
+}
+
+#desknav {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.links {
+    display: inline;
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.links:hover {
+    border-bottom: 1px solid black;
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+#nextGame {
+    background: black;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    padding: 10px;
+}
+
+
+#nextGame:hover {
+    background: darkgrey;
+    color: white;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+#featureImg {
+    width: 60%;
+}
+
+.standings {
+    display: inline-table;
+    width: 48%;
+    max-width: 500px;
+    margin: 5px;
+    text-align: center;
+}
+
+
+#standings {
+    margin: 0;
+    padding: 0;
+}
+
+#standings td {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.section {
+    padding-bottom: 5%;
+    font-family: sans-serif;
+}
+
+
+#playerStats, #pHeader, #pAwards, #pCurrent, #pHistory {
+    display: table;
+    width: 100%;
+    max-width: 700px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.pageLinks{
+    margin: 25px;
+    display: inline-block;
+    border: 6px double black;
+    padding: 25px;
+    border-radius: 200px;
+    box-shadow: 0px 10px 10px lightgrey;
+}
+
+.awards{
+    margin: 0px;
+    display: inline-block;
+    height: 100px;
+}
+#awards th{
+    background-color: #225D7A;
+    color: goldenrod;
+    border-bottom: 1px solid black;
+}
+
+historyYear,
+historyTeam {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-style: normal;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.sponsorlinks {
+    max-width: 100%;
+    height: 70px;
+    /*    filter: grayscale(100%);*/
+}
+
+th {
+    background: #225D7A;
+    color: white;
+    height: 30px;
+    font-weight: 500;
+}
+
+
+#deskGamesPast td:nth-child(5n+2),
+#deskSchedule td:nth-child(3n+2) {
+    border-left: 2px #225D7A solid;
+}
+
+
+.desktop tr:nth-child(odd),
+.standings tr:nth-child(odd) {
+    background: #a3dbf7;
+}
+
+hr {
+    color: #225D7A;
+}
+
+noscript {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+table {
+    border: none;
+}
+
+#mtoday,
+#dtoday {
+    background: black;
+    color: white;
+}
+
+.teamA,
+.teamB {
+    text-align: center;
+    background: #a3dbf7;
+    min-width: 20px;
+    font-size: 12pt;
+}
+
+#logo {
+    height: 150px;
+}
+
+.offset::before {
+    content: "";
+    display: block;
+    height: 60px;
+    /*        margin-top: 100px;*/
+    /*        position: relative;*/
+    /*        top: 100px;*/
+    /*        background: red;*/
+}
+
+.players:hover {
+    border-bottom: 1px solid black;
+}
+
+.pPoints {
+    width: 30px;
+}
+
+#playerImage {
+    width: 250px;
+}
+
+#footer{
+    padding-bottom: 50px;
+}
+
+/*break point for game schedule (past and future)*/
+
+@media screen and (max-width: 900px) {
+    body {
+        padding: 0px;
+        margin: 0px;
+
+    }
+
+    a {
+        color: inherit;
+    }
+
+    .tablet {
+        display: block;
+    }
+
+    #deskSchedule.desktop {
+        display: none;
+    }
+
+    #mobileSchedule.mobile {
+        display: table;
+    }
+
+    #header {
+        position: fixed;
+        top: 0;
+        background: white;
+    }
+
+    #root {
+        padding-top: 120px;
+    }
+
+    #featureImg {
+        width: 100%;
+    }
+
+    #logo {
+        width: auto;
+        height: 75px;
+    }
+
+    tr,
+    header {
+        background: white;
+    }
+
+    #header {
+        width: 100%;
+    }
+
+    .standings {
+        margin: 0;
+        margin-top: 5px;
+        width: 90%;
+
+    }
+
+    historyYear,
+    historyTeam {
+        width: auto;
+    }
+
+    .contact,
+    .section {
+        text-align: center;
+        padding: 8px;
+
+    }
+
+
+    li {
+        padding: 10px;
+        margin: 5px;
+        border-bottom: 1px solid black;
+        border-left: 2px solid #225D7A;
+    }
+
+    .pageLinks {
+        width: 80%;
+        padding: 0px;
+        padding-top: 10px;
+    }
+
+    .pageLinks img {
+        width: 100px;
+        height: auto;
+    }
+
+    nav {
+        padding-bottom: 5px;
+    }
+
+    #nextgame {
+        padding: 10px;
+        font-size: 14pt;
+        background: black;
+        color: white;
+        cursor: pointer;
+        width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #playerImage {
+        padding-top: 50px;
+    }
+    
+
+}
+
+@media screen and (max-width: 700px) {
+
+    #root {
+        padding-top: 150px;
+    }
+
+    #headerName {
+        font-size: 18pt;
+    }
+
+    #nav {
+        border-bottom: 1px solid black;
+        background-color: white;
+        display: none;
+    }
+
+    #menuButton {
+        display: block;
+        border: 1px solid black;
+        cursor: pointer;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+        background: #225D7A;
+        color: white;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: table;
+        width: 100%;
+    }
+
+
+    .standings {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    body {
+        font-size: .9em;
+    }
+    #pHeader, #pAwards, #pCurrent, #pHistory{
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 325px) {
+    #standings {
+        font-size: .8em;
+    }
+
+    td.players {
+        text-align: left;
+        width: 90px;
+    }
+
+}
