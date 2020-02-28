@@ -1,11 +1,29 @@
 <?php
 
 // APIs
-
+function query($conn, $query){
+    $result = $conn->query($query);
+    if ($result -> num_rows > 0){
+        $row = $result->fetch_assoc();
+        echo "<tr><td>".$row['player']."</td></tr>";
+        echo "<tr><td>".$row['gaa']." GAA</td></tr>";
+    }
+    else{
+        echo "error";
+    }
+}
 // HIGHLIGHT AND AWARDS INFO
-function getChamps($year){ 
+function getChamps($conn, $year){ 
     // select team from Teams order by points limit 1; 
-    return "Stayner"; 
+    $result = $conn->query("SELECT team FROM history.Teams WHERE YEAR(date) = {$year} ORDER BY points LIMIT 1");
+    if ($result -> num_rows > 0){
+        $row = $result->fetch_assoc();
+        echo "<tr><td>".$row['player']."</td></tr>";
+        echo "<tr><td>".$row['gaa']." GAA</td></tr>";
+    }
+    else{
+        echo "error";
+    }
 }
 
 function featureImg($year){ 

@@ -131,9 +131,12 @@
 
         //update via php from last seasons finals
         var teams = ['Stayner', 'Coates Creek', 'Herbtown', 'Belarus', 'New Lowell', 'Cashtown'];
+        <?php
         
+
+        ?>
         // update via php from seasons regular seasons standings
-        var rrteams = ['1st', '2nd', '3rd', '4th', '5th', '6th'];
+        var rrteams = ['New Lowell Hawks', 'Belarus', 'Coates Creek', 'Stayner', 'Cashtown', 'Herbtown'];
         
         // update via php from seasons roundrobin standings
         var playoffteams = ['1st', '2nd', '3rd', '4th'];
